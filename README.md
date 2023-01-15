@@ -154,8 +154,6 @@ Implementing sharded Jetton wallet-contract. Deploying Jetton master and wallet 
 |                               6. Telegram Web App structure and programming                               | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                 7. Telegram bot structure and programming                                 | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
-> TODO: :speech_balloon: Chapter discussion (Telegram group? Github discussions?)
-
 ### 8. Ecosystem products, future plans and vision
 
 :bust_in_silhouette: Assignee: [Kirill Malev](https://t.me/malev)
