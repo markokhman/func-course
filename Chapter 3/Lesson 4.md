@@ -279,4 +279,18 @@ Snapshots:   0 total
 Time:        4.13 s, estimated 5 s
 ```
 
+One last thing we want to do is to make sure that every time we are running tests - we also run our compiler script. This is usefull for effeciency of our work. Most of the developement work is writing func code and then running tests. Let's streamline this:
+
+Update your **package.json** file to look like this:
+
+```
+{
+  ... our previous package.json keys
+  "scripts": {
+    ... previous scripts keys
+    "test": "yarn compile && yarn jest"
+  }
+}
+```
+
 In the next lesson we are going to build our deploy pipeline and learn about how to test the real deploy contract on-chain. See you there!
