@@ -1,12 +1,14 @@
 # Program overview of a FunC Course.
 
-:::info
-:bulb: This repository is a working space on the outline and the contents for **the first FunC video course for beginners**. We are publishing this prior to recording, in order to gather as much feedback as possible.
+This repository is a working space on the outline and the contents for **the first FunC video course for beginners**. We are publishing this prior to recording, in order to gather as much feedback as possible.
 
 For each section we are going to also publish a deadline for providing feedback, where the deadline will be the actual date of this section's recording.
 
+#### How to contribute?
+
+Feel free to contribute to the course! If you have a suggestion of a chapter/lesson/speaker - please open an issue on this repository and we will address it as soon as possible. In case you notice a typo or have some content that is ready to become a chapter/lesson - simply open a Pull Request and we will do our best to integrate this into our course.
+
 For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [Mark](https://t.me/markokhman)
-:::
 
 ## :book: Course contents
 
@@ -18,13 +20,13 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 
 ### 3. Smart contract development lifecycle
 
-### 4. Testing smart contracts
+### 4. Mastering FunC contracts coding
 
-### 5. Frontend interaction with TON blockhain
+### 5. NFT & Jettons
 
-### 6. NFT & Jettons
+### 6. Smartcontract Security
 
-### 7. Security
+### 7. Frontend interaction with TON blockhain
 
 ### 8. Ecosystem products, future plans and vision
 
@@ -57,8 +59,6 @@ etc.
 ex.: Jetton validation example
 etc.
 
-> TODO: :speech_balloon: Chapter discussion (Telegram group? Github discussions?)
-
 ### 2. The essense of Smart contracts
 
 :bust_in_silhouette: Assignee: [Oleg Andreev](https://t.me/oleganza)
@@ -85,21 +85,17 @@ Storing the state in a distributed and tokinized way
 **Lesson 5. Review of classic business problems**
 Plugins, staking-pools, multisig
 
-> TODO: :speech_balloon: Chapter discussion (Telegram group? Github discussions?)
-
 ### 3. Smart contract development lifecycle
 
 :bust_in_silhouette: Assignee: [Mark Okhman](https://t.me/markokhman)
 
-| &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
-| :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|                                 1. Smart contract dev lifecycle overview                                  | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                      2. Setting up a compile worklow                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                      3. Writing simple FunC contract                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                             4. Setting up testing workflow and writing tests                              | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                        5. Deploying smart contract                                        | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-
-> TODO: :speech_balloon: Chapter discussion (Telegram group? Github discussions?)
+| &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |                                    **Text script**                                    |         **Presentation**          |             **Video**             |
+| :-------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: |
+|                                 1. Smart contract dev lifecycle overview                                  | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%203/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                      2. Setting up a compile worklow                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%203/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                      3. Writing simple FunC contract                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%203/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                             4. Setting up testing workflow and writing tests                              | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%203/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                        5. Deploying smart contract                                        | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%203/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 ### 4. Mastering FunC contracts coding
 
@@ -114,9 +110,37 @@ Plugins, staking-pools, multisig
 
 > TODO: I have an idea of adding two more sections with simple master-client contracts logic.
 
-> TODO: :speech_balloon: Chapter discussion (Telegram group? Github discussions?)
+### 5. NFT & Jettons
 
-### 5. Frontend interaction with TON blockhain
+:bust_in_silhouette: Assignee: Open for offers (or [Mark Okhman](https://t.me/markokhman))
+
+> Chapter structure and contents are subject to change based on the assigned author preferences
+
+| &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
+| :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
+|                                    1. Introduction to concept of Token                                    | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                      2. Classic Jetton smartcontract                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                     3. Sharded Jetton wallet-contract                                     | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                     4. Testing Jetton smartcontracts                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                           5. NFT smartcontracts                                           | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+
+#### Notes for the chapter author:
+
+**Lesson 1. Introduction to concept of Token:** Fungible/Non-fungible token concepts. Reviewing token standards.
+
+**Lesson 2. Classic Jetton smartcontract:**
+Glance view to code of classic Jetton smartcontract structure. Implementing sharded Jetton master-contract.
+
+**Lesson 3. Sharded Jetton wallet-contract:**
+Implementing sharded Jetton wallet-contract. Deploying Jetton master and wallet contracts to tesnnet.
+
+### 6. Smartcontract security
+
+:bust_in_silhouette: Assignee: Open for offers (or [Shahar](https://t.me/mrbonezy))
+
+> Chapter structure and contents are subject to change based on the assigned author preferences
+
+### 7. Frontend interaction with TON blockhain
 
 :bust_in_silhouette: Assignee: [Mark Okhman](https://t.me/markokhman)
 
@@ -131,3 +155,7 @@ Plugins, staking-pools, multisig
 |                                 7. Telegram bot structure and programming                                 | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 > TODO: :speech_balloon: Chapter discussion (Telegram group? Github discussions?)
+
+### 8. Ecosystem products, future plans and vision
+
+:bust_in_silhouette: Assignee: [Kirill Malev](https://t.me/malev)
