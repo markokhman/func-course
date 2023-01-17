@@ -182,6 +182,15 @@ The message cell, that we compose prior to passing it into the **send_raw_messag
 
 > TODO: Elaborate on other possible values
 
+One last thing will be to add a new getter method that returns the balance of our contract:
+
+```
+int balance() method_id {
+  var [balance, _] = get_balance();
+  return balance;
+}
+```
+
 Let's have a look one more time how our final code looks:
 
 ```
@@ -253,6 +262,11 @@ const const::min_tons_for_storage = 10000000; ;; 0.01 TON
     recent_sender,
     owner_address
   );
+}
+
+int balance() method_id {
+  var [balance, _] = get_balance();
+  return balance;
 }
 ```
 

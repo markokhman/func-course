@@ -106,7 +106,7 @@ Plugins, staking-pools, multisig
 |                                1. Writing FunC contract with counter logic                                | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%204/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                   2. Writing tests for counter contract                                   | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%204/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                          3. Writing FunC contract with deposit/withdrawal logic                           | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%204/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                               4. Writing tests for deposit/withdrawal logic                               |                           <input type="checkbox" disabled/>                           | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                               4. Writing tests for deposit/withdrawal logic                               | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%204/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 > TODO: Idea - add a lesson that would cover op codes aliasing, TL-B file composing, explain bouncing and how to work with it, how to debug
 
