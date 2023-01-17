@@ -10,7 +10,7 @@ You've already heard of testnet, which is a separate network meant for testing a
 
 Testnet operates with test Ton coins. Those are not worth real value, so you don't need to buy them. You can easily get them from an official [testnet giver Telegram bot](https://t.me/testgiver_ton_bot). Initially, we are going to deploy or contract to testnet.
 
-This bot will ask you for your address, so you need to have a wallet that would operate with test TON coins. You're probably familiary with wallets like Tonhub and Tonkeeper. Tonkeeper has the testnet functinality embed, while Tonhub's testnet functionality is separated into other mobile app called Sandbox. You can use both, Sandbox (by Tonwhales) or Tonkeeper, but for example purposes I will use the Sandbox wallet made by TonWhales team. It is awailable for both [iOS](https://apps.apple.com/tt/app/ton-development-wallet/id1607857373) and [Android](https://play.google.com/store/apps/details?id=com.tonhub.wallet.testnet&hl=en&gl=US). Follow one of the links and download it to your mobile.
+This bot will ask you for your address, so you need to have a wallet that would operate with test TON coins. You're probably familiary with wallets like Tonhub and Tonkeeper. Tonkeeper has the testnet functinality embed, while Tonhub's testnet functionality is separated into other mobile app called Sandbox. You can use both, Sandbox (by Tonwhales) or Tonkeeper, but for example purposes I will use the Sandbox wallet made by TonWhales team. It is available for both [iOS](https://apps.apple.com/tt/app/ton-development-wallet/id1607857373) and [Android](https://play.google.com/store/apps/details?id=com.tonhub.wallet.testnet&hl=en&gl=US). Follow one of the links and download it to your mobile.
 
 Once you have installed Sandbox and created a wallet there - use it's address to receive testnet coins on [testnet giver Telegram bot](https://t.me/testgiver_ton_bot).
 
@@ -149,7 +149,7 @@ async function deployScript() {
   });
 
   console.log(
-    `The address of the contract is following: ${address.toFriendly()}`
+    `The address of the contract is following: ${address.toFriendly({ testOnly: true })}`
   );
   console.log(`Please scan the QR code below to deploy the contract:`);
 
@@ -171,26 +171,455 @@ async function deployScript() {
 deployScript();
 ```
 
-And again, we're immediately creating another script running shortcut in our **package.json** file:
+And again, we're immediately creating another script running shortcut in our **package.json** file. Let's call this script **deploy:testnet**, so we can later use the name **deploy** for mainnet deployments:
 
 ```
 {
   ... our previous package.json keys
   "scripts": {
     ... previous scripts keys
-    "deploy": "ts-node ./scripts/deploy.ts"
+    "deploy:testnet": "ts-node ./scripts/deploy.ts"
   }
 }
 ```
 
-Let's run the deploy script (`yarn deploy`) and scan the QR code with the Sandbox mobile app. Make sure you have your tesnet TON coins on this wallet in Sanbox.
+Let's run the deploy script (`yarn deploy:testnet`) and scan the QR code with the Sandbox mobile app. Make sure you have your tesnet TON coins on this wallet in Sanbox.
 
-Once done, how do we check the contract is successfully deployed? Easily! You're probably already familiar with a concept of blockchain explorers. On of the go-to blockchain explorer in TON is [Tonscan](https://tonscan.org/). It also has a [testnet version](https://testnet.tonscan.org/).
+Once done, how do we check the contract is successfully deployed? Easily! You're probably already familiar with a concept of blockchain explorers. On of the go-to blockchain explorer in TON is [Tonapi](https://tonapi.io/). It also has a [testnet version](https://testnet.tonapi.io/).
 
 Open the tesnet version in your browser and insert the address of the smartcontract into the search bar. This will open a page of your smartcontract. If you've done everything with me step by step - you will see a single transaction of 1 ton that has deployed our contract to the blockchain.
 
 Congratulations! Your first TON smartcontract is deployed!
 
-### Post-deploy onchain tests
+### Post-deploy onchain test
+
+Yes, you've made it, but there is an important thing that you really want to take care of - post-deploy on-chain test. Once our contract is deployed, we want to ensure the functinality behaves the way we expect it to. For this we will write a script that will actually test our functinality.
+
+However, before running this test we need to make sure that our contract is deployed. To do so, we need to acces the current state of TON blockchain. There is a great tool that allows us to connect to almost every possible type of TON blockchain APIs - [TON Access](https://github.com/orbs-network/ton-access) assembled by [Orbs team](https://www.orbs.com/).
+
+First things first - create a file **postdeploy.ts** in our **scripts** folder.
+
+Add script running shortcut into the **package.json** file:
+
+```
+{
+  ... our previous package.json keys
+  "scripts": {
+    ... previous scripts keys
+    "postdeploy": "ts-node ./scripts/postdeploy.ts"
+  }
+}
+```
+
+To check if the contract is deployed we need it's address. We want our setup to be comfy to use and require minimal manual work, so we will not hardcode the address we've seen prior to deploy. We are going to calculate it independently, because we remember, that the address might change based on the contract code and it's initial state data.
+
+This is how our initial code looks when we want to get an address of our contract:
+
+```
+import { Cell, contractAddress } from "ton";
+import { hex } from "../build/main.compiled.json";
+
+async function postDeployScript() {
+  const codeCell = Cell.fromBoc(Buffer.from(hex, "hex"))[0];
+  const dataCell = new Cell();
+
+  const address = contractAddress({
+    workchain: 0,
+    initialCode: codeCell,
+    initialData: dataCell,
+  });
+}
+
+postDeployScript()
+```
+
+Let's first install the **[@orbs-network/ton-access](https://github.com/orbs-network/ton-access)** library:
+
+```
+yarn add @orbs-network/ton-access --save
+```
+
+Now let's update our code with a logic of checking our contract's state on the network by it's address:
+
+```
+import { Cell, contractAddress } from "ton";
+import { hex } from "../build/main.compiled.json";
+import { getHttpV4Endpoint } from "@orbs-network/ton-access";
+
+async function postDeployScript() {
+  const codeCell = Cell.fromBoc(Buffer.from(hex, "hex"))[0];
+  const dataCell = new Cell();
+
+  const address = contractAddress({
+    workchain: 0,
+    initialCode: codeCell,
+    initialData: dataCell,
+  });
+
+  const endpoint = await getHttpV4Endpoint({
+    network: "testnet",
+  });
+  const client4 = new TonClient4({ endpoint });
+
+  const latestBlock = await client4.getLastBlock();
+  let status = await client4.getAccount(latestBlock.last.seqno, address);
+
+  if (status.account.state.type !== "active") {
+    console.log("Contract is not active");
+    return;
+  }
+
+}
+
+postDeployScript()
+```
+
+Let's dive a little bit more into this code. What have we got here?
+
+- we use **getHttpV4Endpoint** function to connect to an API endpoint hosted by Orbs team and get a client object of v4 protocol. You can learn more about v4 protocol [here](https://github.com/ton-community/ton-api-v4)
+  > So far we have to set the config parameter of network to **testnet**.
+- we get information about last block
+- we use v4 client's **getAccount** method, providing it the sequence number and our contract's **address**
+
+As a result, we can stop our script in case the contract was not yet deployed.
+
+Now let's get to the actual test. We are going to create a link for a simple transaction that will send 1 TON to our contract's address. Same as we did during the deploy process, we will show QR code of this link, so you could scan it with your Sandbox wallet mobile app.
+
+```
+let link =
+    `https://test.tonhub.com/transfer/` +
+    address.toFriendly({ testOnly: true }) +
+    "?" +
+    qs.stringify({
+      text: "Simple test transaction",
+      amount: toNano(1).toString(10),
+    });
+
+qrcode.generate(link, { small: true }, (code) => {
+    console.log(code);
+});
+```
+
+We have to also import **toNano** function from **ton** library. It converts amount of TON coins into nanos. One TON has 1 000 000 000 nanos in it. In TON, an amount of TON coins is always represented in nanos. For usability, most of the times we will operate with nanos as a string.
+
+Also, note, that we are using the **toFriendly** method of the adress object, providing it config parameter that specifies the address is from testnet.
+
+Immediately after showing the QR code, our script will start invoking a getter method on our contract, to receive the latest sender's address. We are going to only console log if the the latest sender's address changes, to avoid consol logging same results.
+
+Let's first see the code for this logic of getting the latest sender's, we will breakdown what happens there and then integrate it to our script:
+
+```
+let recent_sender_archive: Address;
+
+setInterval(async () => {
+    const latestBlock = await client4.getLastBlock();
+    const { exitCode, result } = await client4.runMethod(
+      latestBlock.last.seqno,
+      address,
+      "get_the_latest_sender"
+    );
+
+    if (exitCode !== 0) {
+      console.log("Running getter method failed");
+      return;
+    }
+    if (result[0].type !== "slice") {
+      console.log("Unknown result type");
+      return;
+    }
+
+    let most_recent_sender = result[0].cell.beginParse().readAddress();
+
+    if (
+      most_recent_sender &&
+      most_recent_sender.toString() !== recent_sender_archive?.toString()
+    ) {
+      console.log(
+        "New recent sender found: " +
+          most_recent_sender.toFriendly({ testOnly: true })
+      );
+      recent_sender_archive = most_recent_sender;
+    }
+}, 2000);
+```
+
+What exactly do we do in this code:
+
+- we are setting up this function to repeat every 2 seconds
+- every time we perform a check, we need to get the latest block's sequence number with **getLastBlock**
+- we're using **runMethod** to call our getter method and parameters we're interested in are **exitCode** and **result**.
+- we make sure the script stops if the call was not successfull or the data received is not of a slice type (as you remember, an address in TON is always a slice)
+- we take the result of get method, namely it's first item (the **result** is an array, as in other cases there could be more then one result returned by getter method)
+- we take a **cell** parameter of the **result**, open it for parse and then read an address from it
+- we compare the string version of the address to the string version of the possible previous sender we've received. If they are not equal - we console log the new **most recent sender's address**.
+
+Let's see, how our final code looks:
+
+```
+import { Cell, contractAddress, Address, TonClient4, toNano } from "ton";
+import { hex } from "../build/main.compiled.json";
+import { getHttpV4Endpoint } from "@orbs-network/ton-access";
+import qs from "qs";
+import qrcode from "qrcode-terminal";
+
+async function postDeployScript() {
+  const codeCell = Cell.fromBoc(Buffer.from(hex, "hex"))[0];
+  const dataCell = new Cell();
+
+  const address = contractAddress({
+    workchain: 0,
+    initialCode: codeCell,
+    initialData: dataCell,
+  });
+
+  const endpoint = await getHttpV4Endpoint({
+    network: "testnet",
+  });
+  const client4 = new TonClient4({ endpoint });
+
+  const latestBlock = await client4.getLastBlock();
+  let status = await client4.getAccount(latestBlock.last.seqno, address);
+
+  if (status.account.state.type !== "active") {
+    console.log("Contract is not active");
+    return;
+  }
+
+  let link =
+    `https://test.tonhub.com/transfer/` +
+    address.toFriendly({ testOnly: true }) +
+    "?" +
+    qs.stringify({
+      text: "Simple test transaction",
+      amount: toNano(1).toString(10),
+    });
+
+  qrcode.generate(link, { small: true }, (code) => {
+    console.log(code);
+  });
+
+  let recent_sender_archive: Address;
+
+  setInterval(async () => {
+    const latestBlock = await client4.getLastBlock();
+    const { exitCode, result } = await client4.runMethod(
+      latestBlock.last.seqno,
+      address,
+      "get_the_latest_sender"
+    );
+
+    if (exitCode !== 0) {
+      console.log("Running getter method failed");
+      return;
+    }
+    if (result[0].type !== "slice") {
+      console.log("Unknown result type");
+      return;
+    }
+
+    let most_recent_sender = result[0].cell.beginParse().readAddress();
+
+    if (
+      most_recent_sender &&
+      most_recent_sender.toString() !== recent_sender_archive?.toString()
+    ) {
+      console.log(
+        "New recent sender found: " +
+          most_recent_sender.toFriendly({ testOnly: true })
+      );
+      recent_sender_archive = most_recent_sender;
+    }
+  }, 2000);
+}
+
+postDeployScript();
+```
+
+Let's go ahead and run it!
+
+```
+yarn postdeploy
+```
+
+If you've done everything right, you will see a QR code in your terminal and the most recent sender's address. It has to equal to the address of your Sandbox wallet address, the one you've used for deploying the contract.
+
+> When we were deploying the contract, we've sent the code and initial state along with 1 TON, so immediately after the contract was deployed, it's code got executed and saved the sender into c4 storage.
+
+To make sure our script works as expected, you could create another wallet on Sanbox, fill it with tesnet TON coins and again send it to our contract. You would see an update in the console after a few seconds, because the most recent sender's address changed.
 
 ### Deploying to mainnet
+
+Let's adjust our script, so we could specify whether we want to deploy the contract to testnet or the mainnet. This will require us two things:
+
+1. We will introduce an environment variable **TESTNET**, that will be set depending on the script we are running (deploy or deploy_mainnet)
+2. We have to update our code in all the places that include testnet/mainnet differentiation.
+
+Let's first update our **package.json** file:
+
+```
+{
+  ... our previous package.json keys
+  "scripts": {
+    ... previous scripts keys
+    "deploy": "TESTNET=true ts-node ./scripts/deploy.ts",
+    "deploy_mainnet": "ts-node ./scripts/deploy.ts",
+    "postdeploy": "TESTNET=true ts-node ./scripts/postdeploy.ts",
+    "postdeploy_mainnet": "ts-node ./scripts/postdeploy.ts"
+  }
+}
+```
+
+As you can see, we are now passing a **TESTNET** variable for testnet deploy, let's now update our code of **deploy.ts** file:
+
+```
+import { hex } from "../build/main.compiled.json";
+import { Cell, contractAddress, StateInit, toNano } from "ton";
+import qs from "qs";
+import qrcode from "qrcode-terminal";
+
+async function deployScript() {
+  console.log(
+    "================================================================="
+  );
+  console.log("Deploy script is running, let's deploy our main.fc contract...");
+  const codeCell = Cell.fromBoc(Buffer.from(hex, "hex"))[0];
+  const dataCell = new Cell();
+
+  const initCell = new Cell();
+  new StateInit({
+    code: codeCell,
+    data: dataCell,
+  }).writeTo(initCell);
+
+  const address = contractAddress({
+    workchain: 0,
+    initialCode: codeCell,
+    initialData: dataCell,
+  });
+
+  console.log(
+    `The address of the contract is following: ${address.toFriendly({
+      testOnly: process.env.TESTNET ? true : false,
+    })}`
+  );
+  console.log(`Please scan the QR code below to deploy the contract:`);
+
+  let link =
+    `https://${process.env.TESTNET ? "test." : ""}tonhub.com/transfer/` +
+    address.toFriendly({ testOnly: true }) +
+    "?" +
+    qs.stringify({
+      text: "Deploy contract",
+      amount: toNano(1).toString(10),
+      init: initCell.toBoc({ idx: false }).toString("base64"),
+    });
+
+  qrcode.generate(link, { small: true }, (code) => {
+    console.log(code);
+  });
+}
+
+deployScript();
+
+```
+
+We only had to change our code in two places:
+
+- when logging the contract address, we set **testOnly** flag only we're on testnet
+- when composing a link for a deploy transaction
+
+Now, let's update our **postdeploy.ts** script with the same:
+
+```
+import { Cell, contractAddress, Address, TonClient4, toNano } from "ton";
+import { hex } from "../build/main.compiled.json";
+import { getHttpV4Endpoint } from "@orbs-network/ton-access";
+import qs from "qs";
+import qrcode from "qrcode-terminal";
+
+async function postDeployScript() {
+  const codeCell = Cell.fromBoc(Buffer.from(hex, "hex"))[0];
+  const dataCell = new Cell();
+
+  const address = contractAddress({
+    workchain: 0,
+    initialCode: codeCell,
+    initialData: dataCell,
+  });
+
+  const endpoint = await getHttpV4Endpoint({
+    network: process.env.TESTNET ? "testnet" : "mainnet",
+  });
+  const client4 = new TonClient4({ endpoint });
+
+  const latestBlock = await client4.getLastBlock();
+  let status = await client4.getAccount(latestBlock.last.seqno, address);
+
+  if (status.account.state.type !== "active") {
+    console.log("Contract is not active");
+    return;
+  }
+
+  let link =
+    `https://${process.env.TESTNET ? "test." : ""}tonhub.com/transfer/` +
+    address.toFriendly({ testOnly: true }) +
+    "?" +
+    qs.stringify({
+      text: "Simple test transaction",
+      amount: toNano(1).toString(10),
+    });
+
+  qrcode.generate(link, { small: true }, (code) => {
+    console.log(code);
+  });
+
+  let recent_sender_archive: Address;
+
+  setInterval(async () => {
+    const latestBlock = await client4.getLastBlock();
+    const { exitCode, result } = await client4.runMethod(
+      latestBlock.last.seqno,
+      address,
+      "get_the_latest_sender"
+    );
+
+    if (exitCode !== 0) {
+      console.log("Running getter method failed");
+      return;
+    }
+    if (result[0].type !== "slice") {
+      console.log("Unknown result type");
+      return;
+    }
+
+    let most_recent_sender = result[0].cell.beginParse().readAddress();
+
+    if (
+      most_recent_sender &&
+      most_recent_sender.toString() !== recent_sender_archive?.toString()
+    ) {
+      console.log(
+        "New recent sender found: " +
+          most_recent_sender.toFriendly({
+            testOnly: process.env.TESTNET ? true : false,
+          })
+      );
+      recent_sender_archive = most_recent_sender;
+    }
+  }, 2000);
+}
+
+postDeployScript();
+```
+
+We had to similarly change three things in our **postdeploy.ts** script:
+
+- when we connect to the client in order to read blockchain
+- when logging the contract address, we set **testOnly** flag only we're on testnet
+- when composing a link for a deploy transaction
+
+Now we can deploy and run postdeploy test on both - testnet and mainnet!
+
+You've made it! Seriously, I'm proud of you! We've done a solid amount of work, but the good thing is that now you understand the whole process of how contracts get developed and deployed.
+
+In our next chapter we are going to dig into more complex FunC logic and writing local tests for it.
