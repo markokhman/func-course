@@ -101,14 +101,15 @@ Plugins, staking-pools, multisig
 
 :bust_in_silhouette: Assignee: [Mark Okhman](https://t.me/markokhman)
 
-| &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
-| :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|                                1. Writing FunC contract with counter logic                                | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                   2. Writing tests for counter contract                                   | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                          3. Writing FunC contract with deposit/withdrawal logic                           | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                               4. Writing tests for deposit/withdrawal logic                               | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+| &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |                                    **Text script**                                    |         **Presentation**          |             **Video**             |
+| :-------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: |
+|                                1. Writing FunC contract with counter logic                                | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%204/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                   2. Writing tests for counter contract                                   |                           <input type="checkbox" disabled/>                           | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                          3. Writing FunC contract with deposit/withdrawal logic                           |                           <input type="checkbox" disabled/>                           | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                               4. Writing tests for deposit/withdrawal logic                               |                           <input type="checkbox" disabled/>                           | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 > TODO: I have an idea of adding two more sections with simple master-client contracts logic.
+> TODO: Anothoer idea - add a lesson with TL-B file composing.
 
 ### 5. NFT & Jettons
 
