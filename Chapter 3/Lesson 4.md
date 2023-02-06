@@ -103,9 +103,9 @@ describe("main.fc contract tests", () => {
 
   it("our first test", async () => {
  	const codeCell = Cell.fromBoc(Buffer.from(hex, "hex"))[0];
-    	const initDataCell = beginCell().endCell();
-    	const contract = await SmartContract.fromCell(codeCell, initDataCell);
-
+    const initDataCell = beginCell().endCell();
+    const contract = await SmartContract.fromCell(codeCell, initDataCell);
+  });
 });
 
 ```
@@ -116,7 +116,7 @@ At this point, we have an instance of a smartcontract that we can interact with 
 
 **ton** library provides us with another great construction called **Address**. As you know, every entity on TON blockchain has an address. In real life, if you want to send a message from one contract (ex. wallet contract) to another - you know both contract's addresses.
 
-While writing tests we emulate a contract and when we interact with - there is no need of an adress, as our emulated contract is known. However, the we will need to specify an address, while constructing messages that we send to our contract while testing it. We are going to use a so called "zero address". Zero address has a same format as real address, but is filled with 0 instead of actual address. This is simply a placeholder:
+While writing tests we emulate a contract and when we interact with - there is no need of an adress, as our emulated contract is known. However, then we will need to specify an address, while constructing messages that we send to our contract while testing it. We are going to use a so called "zero address". Zero address has a same format as real address, but is filled with 0 instead of actual address. This is simply a placeholder:
 
 `const zeroAddress = new Address(0, Buffer.alloc(32, 0));`
 
