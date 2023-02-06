@@ -20,7 +20,7 @@ So, what is the message bringing us? What we can already see are three parameter
 
 - **msg_value** - this parameter is telling us how many TON coin (or grams) are received with this message
 - **in_msg** - this is a complete message that we've received, with all the information about who sent it etc. We can see that it has type Cell. What does it mean? The message body is stored as a Cell on the TVM, so there is one whole Cell dedicated to our message with all of it's data.
-- **in_msg_body** - this is an actual "readble" part of the message that we received. It has type of slice, because it is part of the Cell, it indicates the "address" from which part of the cell we should start reading if we want to read this slice parameter.
+- **in_msg_body** - this is an actual "readable" part of the message that we received. It has type of slice, because it is part of the Cell, it indicates the "address" from which part of the cell we should start reading if we want to read this slice parameter.
 
 TODO: Elaborate on the contents of the **in_msg** cell.
 
@@ -111,7 +111,7 @@ Using those two new capabilities, we can do a following thing. We can store the 
 
 In other words, our getter would always return the address of a contract that sent a message to our contract the latest.
 
-### Using persistant storage
+### Using persistent storage
 
 In order to store same data in our c4 persistent storage, we are going to use FunC standard function **set_data**. This function is accepting and storing a Cell.
 
@@ -156,7 +156,7 @@ We've been talking about function specifiers recently. To make our data accessib
 Let's create one:
 
 ```
-slice get_the_latest_sener() method_id {
+slice get_the_latest_sender() method_id {
 
 }
 ```
@@ -168,7 +168,7 @@ As you can see, we define what time is supposed to be returned by that function,
 Now let's write the logic of reading data from the persistent storage and returning it's value. For thise we are using FunC standard **get_data** function:
 
 ```
-slice get_the_latest_sener() method_id {
+slice get_the_latest_sender() method_id {
    slice ds = get_data().begin_parse();
    return ds~load_msg_addr();
 }
@@ -191,7 +191,7 @@ Our final code looks like that:
 	set_data(begin_cell().store_slice(sender_address).end_cell());
 }
 
-slice get_the_latest_sener() method_id {
+slice get_the_latest_sender() method_id {
    slice ds = get_data().begin_parse();
    return ds~load_msg_addr();
 }
