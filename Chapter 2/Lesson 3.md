@@ -1,5 +1,7 @@
 # Chapter 2. Lesson 3. Authorization
 
+(DRAFT)
+
 - methods:
   - message sender
   - signatures

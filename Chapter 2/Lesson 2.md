@@ -1,5 +1,7 @@
 # Chapter 2. Lesson 2. Understanding transaction cost
 
+(DRAFT)
+
 - components:
   - rent
   - msg fees
