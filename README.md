@@ -38,11 +38,11 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 
 | &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
 | :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|                                 1. Blockchains, accounts and transactions                                 | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                  2. Understanding the concept of account                                  | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                               3. Breakdown the logic of classic wallet code                               | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                            4. Breakdown the logic of NFT (Non-fungible token)                             | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                     5. Breakdown the logic of Jetton                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                 1. Blockchains, accounts and transactions                                 | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                  2. Understanding the concept of account                                  | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                               3. Breakdown the logic of classic wallet code                               | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                            4. Breakdown the logic of NFT (Non-fungible token)                             | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                     5. Breakdown the logic of Jetton                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 #### Notes for the chapter author:
 
@@ -65,11 +65,11 @@ etc.
 
 | &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
 | :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|                                 1. Messages types and computation phases                                  | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                     2. Understanding transaction cost                                     | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                             3. Authorization                                              | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                           4. Scalable contracts                                           | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                  5. Review of classic business problems                                   | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                 1. Messages types and computation phases                                  | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                     2. Understanding transaction cost                                     | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                             3. Authorization                                              | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                           4. Scalable contracts                                           | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                  5. Review of classic business problems                                   | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 #### Notes for the chapter author:
 
