@@ -5,7 +5,7 @@
 TON Blockchain is designed as an _infinitely scalable_ platform for _decentralized applications_.
 
 This sounds pretty abstract, so let’s unpack these two requirements. 
-We will start with the most basic idea and building up to reach the level of complexity of TON.
+We will start with the most basic idea and build up to reach the level of complexity of TON.
 
 ### Bitcoin model: first generation blockchain
 
@@ -22,7 +22,7 @@ Bitcoin went a little bit further and added ability to customize authorization l
 
 ### Ethereum model: second generation blockchain
 
-5 years after Bitcoin, Ethereum came on stage and offered a further generalization on top of this model. The goal of Ethereum is to allow unrestricted innovation not only in the ways to work with the money (coins), but also allow people to define their own financial assets. Ethereum add the following ideas to Bitcoin:
+5 years after Bitcoin, Ethereum came on stage and offered a further generalization on top of this model. The goal of Ethereum is to allow unrestricted innovation not only in the ways to work with the money (coins), but also allow people to define their own financial assets. Ethereum adds the following ideas to Bitcoin:
 
 1. Each account’s state is not just the predicate + amount of coins, but an arbitrary data store + arbitrary Turing-complete code + amount of coins.
 2. To make execution safe, each operation has a precise definition of a cost in "gas units" that are paid by the account.
@@ -53,9 +53,9 @@ _Transactions_ record the _incoming_ message and the results of its processing: 
 
 This scheme allows verifying contracts completely independently from each other. Meaning, the blockchain is already _sharded_ at the level of each account. 
 
-Consensus protocol is proof-of-stake that forms two blockchains: _masterchain_ and _workchain_ (also known as _base chain_). Master chain never shards, while workchain can dynamically split and merge back _shardchains_: groups of contracts with the common set of validators.
+Consensus protocol is proof-of-stake that forms two blockchains: _masterchain_ and _workchain_ (also known as _base chain_). Masterchain never shards, while workchain can dynamically split and merge back _shardchains_: groups of contracts with the common set of validators.
 
-Masterchain is used for infrequent configuration transaction and for recording routing of the messages within the workchain. This means masterchain, like Bitcoin, does not scale, but is also not doing much. While workchain, like Ethereum, comntains all the complexity of custom smart contracts, but scales horizontally.
+Masterchain is used for infrequent configuration transaction and for recording routing of the messages within the workchain. This means masterchain, like Bitcoin, does not scale, but is also not doing much. While workchain, like Ethereum, contains all the complexity of custom smart contracts, but scales horizontally.
 
 _Validators_ are nodes that lock up their _stake_ (security deposit) under promise to correctly verify transactions and sign off blocks. The "valid blockchain" is the one with two thirds of signatures.
 
