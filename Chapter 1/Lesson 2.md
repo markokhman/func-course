@@ -1,47 +1,34 @@
-# Chapter 1. Lesson 2. Understanding the concept of account.
+# Chapter 1, lesson 5
+## Tokens
 
-### What are accounts?
+Important aspects of the TON platform is that it allows you to create custom types of assets. This means not only custom currencies, but all sorts of things of value that can be transferred and transformed and passed around not as applications but as things of value. Collectively they are called tokens. And this is a technical term, that means a lot of things. Basically, everything of value is token, splitting the value of certain systems into transferable chunks is referred as *tokenization*.
 
-Account in TON is also known as a "contract". It contains three key ingredients:
+### Fungible vs non-fungible token
+What types of tokens could we imagine? First of all, there's a well-known division into **fungible** and **non-fungible** tokens or NFT's. 
+First of all, the main difference is that non-fungible tokens are unique. They have a property called owner, but they cannot be sliced down into equally interchangeable parts. So unique tokens are *collectibles*. Examples:
+* Tickets
+* TON DNS records 
+* Usernames 
+* Financial contracts
+* Subscription system money collecting object
 
-* Code
-* Data
-* Coins
+By being a token, it permits its owner to change the owner, rotate the keys, and sell the business.
 
-The job of the contract is to protect its state (data and coins) while implementing some logic in deterministic and useful manner.
+As for fungible tokens, they are those which don't have just the owner, they do have a counter and number of items. The obvious example of such are currencies. They are:
+* Stable coins
+* Cryptocurrencies
+* Monopoly money
 
-TON protocol has very little logic baked into its implementation. The idea is that built-in logic is hard to upgrade, while contract code can be created and improved by anyone. TON's core job is to correctly execute any custom code and enforce some invariants (verify transfers of coins + collect transaction fees).
+All of these are examples of fungible tokens. Further in the course we will talk about the concept of their work in a more detailed way. 
+Fungible tokens, they have the owner, and the way they are implemented is that each token has a contract for each owner. Instead of switching the owners instead, in those instances they *transfer messages* between each other to update the balances. It means that each contract holds the balance for each owner. In case you want to transfer a certain amount, then it simply decrements this amount in its own storage, and sends a message to its sibling contract to increment its counter.
 
-### What can I do with contracts?
+### Tokens in TON
+Concerning both fungible tokens and non-fungible tokens, they're all scalable in TON. This is an important aspect of TON. Non-fungible tokens and fungible tokens are implemented in a way that they can scale to billions of users. And transactions between them don't create bottlenecks in some specific place. 
 
-Contract can implement a wide range of concepts:
+Let's say you have a system where the balances may have different states. So you may have money that is temporarily unavailable, but you want to record that the user has deposited it. The scalable way is to implement extra tokens. You may have your primary token – that is what your system is designed around your main stable coin or cryptocurrency; auxiliary tokens that represent those in a different, for example temporary state; smart contracts that would convert one form or another. 
+Hence, from the users' perspective, these auxiliary tokens are not really things of value, they probably don't even have to see them as different assets in their wallets, instead, they would probably just see their normal tokens in just different states.
 
-* Wallet accounts
-* Multiparty contracts
-* Tokens
-* DNS records
-* Exchanges
-* Liquidity pools
-* Price oracles
+### Conclusion
 
-Together, all the contracts form the _TON ecosystem_. People can create fully decentralized and immutable contracts and build other contracts that fully trust them.
-
-### Contract address
-
-Each contract is identified by a hash of its code + initial data and looks like this:
-
-```
-EQAhE3sLxHZpsyZ_HecMuwzvXHKLjYx4kEUehhOy2JmCcHCT
-```
-
-The address also contains the ID of the workchain: some accounts may exist on the masterchain, but most sit on the "basechain". Sharding does not affect account identifiers: the first bits of the address determine which shard (that is, which validator subgroup) manages transactions on that contract.
-
-### Interacting with contracts
-
-To interact with the contract one need to send it a message. Messages are usually formatted using TL-B scheme that precisely specifies layout and semantics of the data.
-
-A contract reacts to an incoming message (one per transaction), updates its state and potentially emits a few outgoing messages to other contracts.
-
-### Encapsulation and mutability
-
-A contract is fully self-contained entity that does not "see" anything outside its own storage and code. Each transaction replaces one state of the contract with another. This model helps with audit and testing, and enables truly scalable execution.
+As seen, even the token is still in some cases could be a low level building block for a higher level of concept. So on one hand, you have this low level notion of a contract that allows you to implement the token and then it may turn out that the token itself is a low level building block for some other thing we could do to implement tokens in the different states. 
+This is something to be kept in mind while designing applications in TON.
