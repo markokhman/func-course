@@ -1,61 +1,27 @@
-# Chapter 1. Lesson 1. Blockchains, accounts and transactions
+# Chapter 1, lesson 1
+## The overview of the TON ecosystem
 
-### What is blockchain 
+What is TON? It is a technology platform for building decentralized applications. TON is not just a blockchain, it's the entire ecosystem of various entities. In TON, there are different parties: there are users who hold assets that are existing on TON; there are validators who operate the core consensus to make the blockchain hold together and, also, there are app developers who provide all the services that use TON blockchain as their platform.
 
-TON Blockchain is designed as an _infinitely scalable_ platform for _decentralized applications_.
+### Custodial vs non-custodial services
 
-This sounds pretty abstract, so let’s unpack these two requirements. 
-We will start with the most basic idea and building up to reach the level of complexity of TON.
+Then there are different categories of apps and services. The most important distinction is between the custodial and non-custodial services. Here we have a couple of examples:
+Custodial services are those that are operated by some other party that bear responsibility for the deposited funds. Hence, online exchanges are typically custodial services, because they need to take the coins or tokens on the balance of their own wallets, to guarantee trades. But this also creates risks, because they could be hacked and the digital funds could be stolen and impossible to recover.
+As for non-custodial services, they are such that they don't hold users' funds and users have direct personal control over them. Such services keep all the assets in the hands of the user. So, it becomes harder to pull them together. And for this, you need to do some blockchain smart contract mechanics that allow people to safely use the assets in one place, but this place would not be a custodial service, it would be sort of a smart contract, because it provides strong guarantees of security.
+There is also division into custodial and non-custodial wallets. Most popular in any cryptocurrency are non-custodial wallets, where the user holds the secret key that is used to authorize transactions. And they're responsible for not losing this key and authorize various actions on the blockchain with that key. So, most of the time, the funds are on their wallet, and the users can send them to exchange or send them to some decentralized application. They do have this full control and no other party could just pull the money from this wallet, like from credit card.
 
-### Bitcoin model: first generation blockchain
+### Centralized vs decentralized apps
 
-The first and the most successful blockchain, Bitcoin, has the simplest design. Bitcoin solves one problem: how to enable people to hold accounts and exchange digital cash (or digital gold, if you prefer) in a fully decentralized manner? 
+There exists another distinction that is kind of orthogonal to this one, between centralized and decentralized apps. What does it mean? A centralized app is the app that effectively has a server. And this is why it's the app is the app that doesn't require a server, it runs on the blockchain’s smart contract. Let’s have a look at an example:
+The wallet is usually plus or minus a centralized app, because it uses some server to index the blockchain show you the balances. But it still could be non-custodial, cause it's not holding your keys and can't steal your money. It just provides the utility of the current status of your balance.
+Decentralized exchange is one of the examples of a decentralized app. It has a frontend -- some UI that helps you to fill in the form. But the same app may have multiple frontends. And you don't really depend on a server that provides this frontend or any like application. Next, this frontend goes directly to the blockchain to send transactions or get the status from the blockchain. And the backend is not a server, but the blockchain itself. It means that your data is stored in a smart contract. And execution over this data is processed by the entire network instead of your private server. 
 
-To do that, Bitcoin offers these components:
+### Different types of smart contracts
 
-1. Public key-based cryptographic identities: each "account" is simply a public key that is used to authorize any transfer of coins from it.
-2. Transactions: are data structures that contain cryptographic signatures authorizing transfer of coins from one public key to another. Transactions form a cryptographic chain of coins, and since amounts can be split and merged, that chain is actually a directed acyclic graph.
-3. Public distribution: all nodes verify all transactions and ignore unauthorized or malformed transfers.
-4. A consensus protocol: to prevent double-spending, all nodes in the network also verify proof-of-work stamp that helps select the "heaviest" version of the transaction graph at any time, thus allowing to (eventually) work around synchronization issues, attacks on the network etc.
+And finally, there are different categories of entities that you can build using smart contracts on a blockchain. It's not only about the applications that could have the logic which is pretty obvious: you can have a little program that implements trading logic, for instance, and these are called DEXs -- decentralized exchanges, but also things like tokens. Those are
+are assets on the blockchain and they're also modeled as contracts. So, if you can look under the hood, everything's just smart contracts on the blockchain, but if you zoom out, they have very different meaning and role, so there are different entities: apps and tokens. Furthermore, tokens could also have diversity of incarnations, they could be applied as currencies, as stable coins, fully fungible and exchangeable. They could be also collectibles or utility tokens. So, for instance, the TON DNS record that holds globally recognized name “.TON” with various user defined attributes. That's a non-fungible token that could be transferred and sold. It is implemented using smart contract language.
+And also, the smart contract could be kind of like utility tools, and provide plumbing. You may imagine that your application is not a single smart contract, but multiple contracts that are interconnected and help you manage the state hold, like the balances and don't perform some state transitions, whatever you need to do. So, if you have a rather complicated applications, it's very likely that in TON it will have a kind of central smart contract that provides entry point to your application. But then all the like state and other features of it would be provided by some additional satellite: smart contracts that allow you to scale this application up or provide some other modularity or some kind of security features around it.
 
-Bitcoin went a little bit further and added ability to customize authorization logic: instead of plain public keys, each "account" is actually a small predicate. Most often that predicate is just "check signature for public key X", but it may also contain multi-key checks (aka "multisignature contract"), timelocks and a few other conditions.
+### Conclusion
 
-### Ethereum model: second generation blockchain
-
-5 years after Bitcoin, Ethereum came on stage and offered a further generalization on top of this model. The goal of Ethereum is to allow unrestricted innovation not only in the ways to work with the money (coins), but also allow people to define their own financial assets. Ethereum add the following ideas to Bitcoin:
-
-1. Each account’s state is not just the predicate + amount of coins, but an arbitrary data store + arbitrary Turing-complete code + amount of coins.
-2. To make execution safe, each operation has a precise definition of a cost in "gas units" that are paid by the account.
-3. Each account’s code may call into any other account, thus turning the blockchain into a giant library of programs. 
-4. Each program’s duty is to protect its storage and balance and correctly respond to external invocations. 
-
-Ethereum opened the gates to "decentralized finance" with such powerful concept.
-
-However, both Bitcoin and Ethereum did not solve the scalability problem. Consensus protocols of Bitcoin and Ethereum require every node to verify all transactions. As usage grows and smart contract applications become more interconnected, the pressure on the entire network grows super-linearly and fees for transaction execution skyrocket.
-
-### TON model: third generation blockchain
-
-TON is a third-generation blockchain that adds a few more ideas and a couple of tradeoffs to all of the above:
-
-1. Unlike Ethereum, calling into "other accounts" is done by issuing asynchronous "messages". That is, one program cannot wait for another to yield a result. In fact, a program cannot see any state of the blockchain apart from its own. It can only emit and receive messages.
-2. This allows thinking of each account as running its own blockchain. 
-3. Consensus protocol is designed to be two-tier: at the account level (to prevent double-spending of the individual accounts) and at the global level (to route messages between accounts).
-4. To enable horizontal scaling, TON uses Proof-of-Stake scheme with various intersecting subgroups of validators that take on subsets of accounts to validate. This allows spreading the cost of verification instead of multiplying it.
-5. All possible costs are precisely accounted for: not only you pay fees for computation, but also fee for routing of messages and the rent for data storage.
-
-### Summary
-
-In TON, each _account_ (aka _contract_) is a "program + data + coins", like in Ethereum. TON tries to keep as little logic at the built-in level and delegate as much as possible to the "contracts" level: that is, permit users to customize and extend the platform to their liking.
-
-Contracts have their own history and communicate with each other and external world via _messages_. 
-
-_Transactions_ record the _incoming_ message and the results of its processing: the _new state_ of the contract + _outgoing_ messages that it emitted.
-
-This scheme allows verifying contracts completely independently from each other. Meaning, the blockchain is already _sharded_ at the level of each account. 
-
-Consensus protocol is proof-of-stake that forms two blockchains: _masterchain_ and _workchain_ (also known as _base chain_). Master chain never shards, while workchain can dynamically split and merge back _shardchains_: groups of contracts with the common set of validators.
-
-Masterchain is used for infrequent configuration transaction and for recording routing of the messages within the workchain. This means masterchain, like Bitcoin, does not scale, but is also not doing much. While workchain, like Ethereum, comntains all the complexity of custom smart contracts, but scales horizontally.
-
-_Validators_ are nodes that lock up their _stake_ (security deposit) under promise to correctly verify transactions and sign off blocks. The "valid blockchain" is the one with two thirds of signatures.
-
+As seen, in this ecosystem you have all these various entities on the blockchain: you have wallets, exchanges, also take place users who use all this to move things around. Later in this course you will see chapters on things like authorized smart-contracts or like TON connect that allows the communication between the wallet and the decentralized application. In addition, various nuances of communicating with decentralized apps and centralized apps, and how to build axillary features for each of these entities.
