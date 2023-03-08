@@ -136,9 +136,15 @@ Implementing sharded Jetton wallet-contract. Deploying Jetton master and wallet 
 
 ### 6. Smartcontract security
 
-:bust_in_silhouette: Assignee: Open for offers (or [Shahar](https://t.me/mrbonezy))
+:bust_in_silhouette: Assignee: CertiK
 
-> Chapter structure and contents are subject to change based on the assigned author preferences
+| &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
+| :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
+|                                      1. Handling External Messages                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%206/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                    2. Carry-Value Pattern                                     | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                       3. Gas Management                       | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                        4. Storage Management                         | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+
 
 ### 7. Frontend interaction with TON blockhain
 
