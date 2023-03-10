@@ -20,7 +20,7 @@ The basic implementation looks like this:
 ```
 ;; the only function that can get messages not from other smart contracts
 () recv_external(slice in_msg) impure {     
-	var signature = in_msg~load_bits(512);  ;; read the signature from the incoming message
+    var signature = in_msg~load_bits(512);  ;; read the signature from the incoming message
     var cs = in_msg;                        ;; make a copy of the incoming message
     var ds = get_data().begin_parse();      ;; reading the contract storage
     var public_key = ds~load_uint(256);     ;; read the authorized key (contract owner)
@@ -41,7 +41,7 @@ It still can be replayed during that time though.
 
 ```
 () recv_external(slice in_msg) impure {
-	var signature = in_msg~load_bits(512);
+    var signature = in_msg~load_bits(512);
     var cs = in_msg; 
     var valid_until = cs~load_uint(32);         ;; added
     throw_if(35, valid_until <= now());         ;; added
@@ -58,7 +58,7 @@ It still can be replayed during that time though.
 Wallet owner now needs to supply a **sequence number** that’s incremented over the stored one. This ensures any message can be processed only once:
 ```
 () recv_external(slice in_msg) impure {
-	var signature = in_msg~load_bits(512);
+    var signature = in_msg~load_bits(512);
     var cs = in_msg; 
     var (msg_seqno, valid_until) = (cs~load_uint(32), cs~load_uint(32));            ;; changed
     throw_if(35, valid_until <= now());
@@ -83,7 +83,7 @@ Otherwise, gas could deplete the contract funds with gas-free malicious executio
 
 ```
 () recv_external(slice in_msg) impure {
-	var signature = in_msg~load_bits(512);
+    var signature = in_msg~load_bits(512);
     var cs = in_msg; 
     var (msg_seqno, valid_until) = (cs~load_uint(32), cs~load_uint(32));    
     throw_if(35, valid_until <= now());
@@ -102,6 +102,7 @@ Otherwise, gas could deplete the contract funds with gas-free malicious executio
         .end_cell());                                   
 }
 ```
+Also notice that the same signed message can be replayed on another wallet of the same owner. Or message in testnet can be replayed at mainnet.
 
 ## Failed Replay Attack
 
@@ -111,7 +112,7 @@ As a result, if the contract accepts an external message and then throws an exce
 That's why we will save the updated state before the message parsing and execution:
 ```
 () recv_external(slice in_msg) impure {
-	var signature = in_msg~load_bits(512);
+    var signature = in_msg~load_bits(512);
     var cs = in_msg; 
     var (msg_seqno, valid_until) = (cs~load_uint(32), cs~load_uint(32));    
     throw_if(35, valid_until <= now());

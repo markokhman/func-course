@@ -140,8 +140,8 @@ Implementing sharded Jetton wallet-contract. Deploying Jetton master and wallet 
 
 | &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
 | :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|                                      1. Handling External Messages                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%206/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                    2. Carry-Value Pattern                                     | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                      1. Handling External Messages                                      | [Link](Chapter%206/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                    2. Carry-Value Pattern                                     | [Link](Chapter%206/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                       3. Gas Management                       | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                        4. Storage Management                         | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
