@@ -1,4 +1,5 @@
 # Chapter 3. Lesson 3.
+###### tags: `Chapter 3`
 
 In the previous lesson we've created a compile script and now it's time to start writing FunC code. You know what is cool? We are now equiped to see if our FunC code actually works. Once we write some FunC code - we will simply run **yarn compile** and make sure our code is able to run on TVM.
 
