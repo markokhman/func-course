@@ -90,27 +90,16 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 
 ### 5. NFT & Jettons
 
-:bust_in_silhouette: Assignee: Open for offers (or [Mark Okhman](https://t.me/markokhman))
-
-> Chapter structure and contents are subject to change based on the assigned author preferences
+:bust_in_silhouette: Assignee: [Nikita Misharin](@thesmartnik)
 
 | &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
 | :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|                                    1. Introduction to concept of Token                                    | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                      2. Classic Jetton smartcontract                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                     3. Sharded Jetton wallet-contract                                     | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                     4. Testing Jetton smartcontracts                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                           5. NFT smartcontracts                                           | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-
-#### Notes for the chapter author:
-
-**Lesson 1. Introduction to concept of Token:** Fungible/Non-fungible token concepts. Reviewing token standards.
-
-**Lesson 2. Classic Jetton smartcontract:**
-Glance view to code of classic Jetton smartcontract structure. Implementing sharded Jetton master-contract.
-
-**Lesson 3. Sharded Jetton wallet-contract:**
-Implementing sharded Jetton wallet-contract. Deploying Jetton master and wallet contracts to tesnnet.
+|                                    1. Jettons and NFTs architecture                                    | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                      2. NFT Collection Smart contract                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                     3. NFT Item / SBT Item smart contract                                     | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                     4. Jetton Master contract                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                           5. Jetton Wallet contract                                           | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                           6. Jettons and NFT contracts deployment                                            | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 ### 6. Smartcontract security
 
