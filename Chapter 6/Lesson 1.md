@@ -1,3 +1,4 @@
+# Handling External Messages
 ## Intro
 TON is an innovative blockchain that incorporates novel concepts in smart contract design.
 However, the development of smart contracts still requires accuracy. In addition to the traditional aspects of security and attacks, new ones are added that are unique to TON. Let's discuss them.
