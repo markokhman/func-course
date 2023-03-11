@@ -1,5 +1,7 @@
 # Chapter 3. Lesson 2.
 
+###### tags: `Chapter 3`
+
 The goal of this lesson is to setup a local project that is able to compile a sample smartcontract. We are not going to write any FunC just yet. We are just preparing our laboratory. This part can be reused across all your projects later on.
 
 First of all, please make sure that you have three things:
@@ -51,7 +53,7 @@ Let's create a **tsconfig.json** file in a root of our project and put following
 ```
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2020",
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
