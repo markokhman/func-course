@@ -1,4 +1,5 @@
 # Program overview of a FunC Course.
+###### tags: FunC Course
 
 This repository is a working space on the outline and the contents for **the first FunC video course for beginners**. We are publishing this prior to recording, in order to gather as much feedback as possible.
 
@@ -38,11 +39,11 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 
 | &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
 | :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|                                 1. Blockchains, accounts and transactions                                 | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                  2. Understanding the concept of account                                  | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                               3. Breakdown the logic of classic wallet code                               | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                            4. Breakdown the logic of NFT (Non-fungible token)                             | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                     5. Breakdown the logic of Jetton                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                 1. TON Ecosystem overview                                 | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                  2. Blockchains, accounts, transactions in TON                                  | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                               3. Blockchain design principle: three generations of blockchains                               | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                            4. Concept of account/contract                             | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                     5. Tokens: unique / fungible, currencies, DNS items etc.                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 #### Notes for the chapter author:
 
