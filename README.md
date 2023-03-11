@@ -45,46 +45,23 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 |                            4. Concept of account/contract                             | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                     5. Tokens: unique / fungible, currencies, DNS items etc.                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
-#### Notes for the chapter author:
 
-**Lesson 1. Blockchains, accounts and transactions:**
-Overview of the basic account logic - balance, transacitons history. Master and workchain role and possibilities. Understanding the role of validators.
-
-**Lesson 2. Understanding the concept of account**: In-depth concept of the account a.k.a wallet/contract. Customization possiblities that enable variety of custom financial services as well as whole new entities, such as jettons.
-
-**Lesson 4. Breakdown the logic of NFT (Non-fungible token)**
-ex.: Validation of the token on initialization
-etc.
-
-**Lesson 5. Breakdown the logic of Jetton**
-ex.: Jetton validation example
-etc.
-
-### 2. The essense of Smart contracts
+### 2. TVM, transactions, scalability and business cases
 
 :bust_in_silhouette: Assignee: [Oleg Andreev](https://t.me/oleganza)
 
 | &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
 | :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|                                 1. Messages types and computation phases                                  | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                     2. Understanding transaction cost                                     | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                             3. Authorization                                              | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                           4. Scalable contracts                                           | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                  5. Review of classic business problems                                   | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                 1. TVM and memory layout                                  | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                     2. Messages types and computation phases                                     | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                             3. Understanding transaction cost                                            | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                           4. Authorization of messages in contracts                                           | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                  5. Scalable contracts                                   | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                  6. Review of classic business problems                                   | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
-#### Notes for the chapter author:
 
-**Lesson 2. Understanding the concept of account:** Gas, rent, other comissions.
-Paid incoming messages logic.
 
-**Lesson 3. Authorization:**
-Signing messages, sign verification, best practices.
 
-**Lesson 4. Scalable contracts:**
-Storing the state in a distributed and tokinized way
-
-**Lesson 5. Review of classic business problems**
-Plugins, staking-pools, multisig
 
 ### 3. Smart contract development lifecycle
 
