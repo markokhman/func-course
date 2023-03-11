@@ -1,8 +1,10 @@
 # Chapter 3. Lesson 1.
 
+###### tags: `Chapter 3`
+
 ### **Intro to Chapter 3**
 
-In this chapter we are going to get very practical and will actually breakdown the whole cycle of TON smart-contract development, go through each step of it together and the end result would be a ready-made local setup for smartcontract programming, a written FunC code of the contract, tests for our contract an actual deployed contract.
+In this chapter we are going to get very practical and will actually breakdown the whole cycle of TON smart-contract development, go through each step of it together and the end result would be a ready-made custom local setup for smartcontract programming, a written FunC code of the contract, tests for our contract an actual deployed contract.
 
 Let’s get straight to the point.
 
@@ -55,7 +57,7 @@ Usually we are writing our TL-B document once some of the basic functionality is
 
 **3. The sweetes part. We write FunC code.**
 
-You've already seen some FunC code in the first two chapters. However in this FunC is a domain-specific, C-like, statically typed language.
+FunC is a domain-specific, C-like, statically typed language. You've already seen some FunC code in the first two chapters. However in this lesson we are going to actually write some logic with FunC code.
 
 **4. We test our FunC code behaviour locally.**
 
@@ -80,5 +82,19 @@ It is a very interesting process. Sometimes it's hard to find answers, but I enc
 - Have your local "laboratory" of full cycle for creating and "launching" your smartcontracts
 - You will understand the basics of coding a FunC contract
 - You know where to search for answers, once your contract requires more then we cover in examples
+
+
+#### Is there any standard local setups (environments) for writing, testing, and deploying smart contracts?
+
+That's a good question. TON has a rapidly growing set of programming tools, and sometimes it doesn't make sense to create your own custom local setup. There is a great one worth mentioning that is maintained by the TonTech team, officially supported by TON Foundation - [Blueprint](https://github.com/ton-community/blueprint).
+
+You can use it as simple as running a local command:
+``` 
+npm create ton@latest 
+```
+
+This will generate a new project for you with code for all the phases described above. You can read more about this in Bluprint's documentation.
+
+In the scope of this course, we are still going to create a custom one, for the sake of your deeper understanding of how this whole process works under the hood.
 
 Let's go for it!
