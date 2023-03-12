@@ -109,8 +109,8 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 | :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
 |                                      1. Handling External Messages                                      | [Link](Chapter%206/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                    2. Carry-Value Pattern                                     | [Link](Chapter%206/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                       3. Gas Management                       | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                        4. Storage Management                         | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                       3. Gas Management                       | [Link](Chapter%206/Lesson%203.md)  | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                        4. Storage Management                         | [Link](Chapter%206/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 
 ### 7. Frontend interaction with TON blockhain
