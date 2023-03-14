@@ -1,5 +1,4 @@
-# Chapter 3
-## Smart contract development lifecycle
+# Chapter 3.  Smart contract development lifecycle.
 
 :bust_in_silhouette: Author: [Mark Okhman](https://t.me/markokhman)
 
