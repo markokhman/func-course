@@ -1,6 +1,6 @@
 # Chapter 3.  Smart contract development lifecycle.
 
-:bust_in_silhouette: Author: [Mark Okhman](https://t.me/markokhman)
+:bust_in_silhouette: Author: [Mark Okhman](https://t.me/markokhmandev)
 
 | &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |                                    **Text script**                                    |         **Presentation**          |             **Video**             |
 | :-------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: |
