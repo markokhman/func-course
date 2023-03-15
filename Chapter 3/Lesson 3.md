@@ -184,6 +184,8 @@ To load the stored address we are using **~load_msg_addr** to load the address.
 Our final code looks like that:
 
 ```
+#include "imports/stdlib.fc";
+
 () recv_internal(int msg_value, cell in_msg, slice in_msg_body) impure {
 	slice cs = in_msg.begin_parse();
 	int flags = cs~load_uint(4);
