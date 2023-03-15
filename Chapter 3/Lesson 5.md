@@ -251,7 +251,7 @@ Yes, you've made it, but there is an important thing that you really want to tak
 
 However, before running this test we need to make sure that our contract is deployed. To do so, we need to acces the current state of TON blockchain. There is a great tool that allows us to connect to almost every possible type of TON blockchain APIs - [TON Access](https://github.com/orbs-network/ton-access) assembled by [Orbs team](https://www.orbs.com/).
 
-First things first - create a file **postdeploy.ts** in our **scripts** folder.
+First things first - create a file **onchaintest.ts** in our **scripts** folder.
 
 Add script running shortcut into the **package.json** file:
 ```
@@ -259,7 +259,7 @@ Add script running shortcut into the **package.json** file:
   ... our previous package.json keys
   "scripts": {
     ... previous scripts keys
-    "postdeploy": "ts-node ./scripts/postdeploy.ts"
+    "onchaintest": "ts-node ./scripts/onchaintest.ts"
   }
 }
 ```
@@ -271,7 +271,7 @@ This is how our initial code looks when we want to get an address of our contrac
 import { Cell, contractAddress } from "ton";
 import { hex } from "../build/main.compiled.json";
 
-async function postDeployScript() {
+async function onchainTestScript() {
   const codeCell = Cell.fromBoc(Buffer.from(hex, "hex"))[0];
   const dataCell = new Cell();
 
@@ -281,7 +281,7 @@ async function postDeployScript() {
   });
 }
 
-postDeployScript();
+onchainTestScript();
 
 ```
 
@@ -296,7 +296,7 @@ import { Cell, contractAddress } from "ton";
 import { hex } from "../build/main.compiled.json";
 import { getHttpV4Endpoint } from "@orbs-network/ton-access";
 
-async function postDeployScript() {
+async function onchainTestScript() {
   const codeCell = Cell.fromBoc(Buffer.from(hex, "hex"))[0];
   const dataCell = new Cell();
 
@@ -321,7 +321,7 @@ async function postDeployScript() {
 
 }
 
-postDeployScript()
+onchainTestScript()
 ```
 
 Let's dive a little bit more into this code. What have we got here? 
@@ -410,7 +410,7 @@ import { TonClient4 } from "ton";
 import qs from "qs";
 import qrcode from "qrcode-terminal";
 
-async function postDeployScript() {
+async function onchainTestScript() {
   const codeCell = Cell.fromBoc(Buffer.from(hex, "hex"))[0];
   const dataCell = new Cell();
 
@@ -481,13 +481,13 @@ async function postDeployScript() {
   }, 2000);
 }
 
-postDeployScript();
+onchainTestScript();
 ```
 
 Let's go ahead and run it!
 
 ```
-yarn postdeploy
+yarn onchaintest
 ```
 
 If you've done everything right, you will see a QR code in your terminal and the most recent sender's address. It has to equal to the address of your Sandbox wallet address, the one you've used for deploying the contract. 
@@ -509,9 +509,9 @@ Let's first update our **package.json** file:
   "scripts": {
     ... previous scripts keys
     "deploy": "TESTNET=true ts-node ./scripts/deploy.ts",
-    "deploy_mainnet": "ts-node ./scripts/deploy.ts",
-    "postdeploy": "TESTNET=true ts-node ./scripts/postdeploy.ts",
-    "postdeploy_mainnet": "ts-node ./scripts/postdeploy.ts"
+    "deploy:mainnet": "ts-node ./scripts/deploy.ts",
+    "onchaintest": "TESTNET=true ts-node ./scripts/onchaintest.ts",
+    "onchaintest:mainnet": "ts-node ./scripts/onchaintest.ts"
   }
 }
 ```
@@ -586,7 +586,7 @@ We only had to change our code in two places:
 - when composing a link for a deploy transaction
 
 
-Now, let's update our **postdeploy.ts** script with the same:
+Now, let's update our **onchaintest.ts** script with the same:
 
 ```
 import { Cell, contractAddress, Address, TonClient4, toNano } from "ton";
@@ -595,7 +595,7 @@ import { getHttpV4Endpoint } from "@orbs-network/ton-access";
 import qs from "qs";
 import qrcode from "qrcode-terminal";
 
-async function postDeployScript() {
+async function onchainTestScript() {
   const codeCell = Cell.fromBoc(Buffer.from(hex, "hex"))[0];
   const dataCell = new Cell();
 
@@ -667,19 +667,16 @@ async function postDeployScript() {
   }, 2000);
 }
 
-postDeployScript();
+onchainTestScript();
 ```
 
-We had to similarly change three things in our **postdeploy.ts** script:
+We had to similarly change three things in our **onchaintest.ts** script:
 - when we connect to the client in order to read blockchain
 - when logging the contract address, we set **testOnly** flag only we're on testnet
 - when composing a link for a deploy transaction
 
-Now we can deploy and run postdeploy test on both - testnet and mainnet!
+Now we can deploy and run onchain test on both - testnet and mainnet!
 
 You've made it! Seriously, I'm proud of you! We've done a solid amount of work, but the good thing is that now you understand the whole process of how contracts get developed and deployed.
 
 In our next chapter we are going to dig into more complex FunC logic and writing local tests for it.
-
-TODO: Resolve the issue why on running single script, ex. yarn deploy - postdeploy runs as well.
-
