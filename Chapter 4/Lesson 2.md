@@ -194,7 +194,7 @@ Now we are all set to return to our **tests/main.spec.ts** and proceed with comp
 // ... library imports 
 
 describe("main.fc contract tests", () => {
-  it("should get the proper most recent sender address", async () => {
+  it("should successfully increase counter in contract and get the proper most recent sender address", async () => {
     const blockchain = await Blockchain.create();
     const codeCell = Cell.fromBoc(Buffer.from(hex, "hex"))[0];
 
