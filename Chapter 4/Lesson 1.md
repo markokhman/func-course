@@ -107,9 +107,9 @@ set_data(
 );
 ```
 
-But now we also need to update our getter method, so it also reads the storage data in a proper order:
+But now we also need to update our getter method, so it also reads the storage data in a proper order. We are going to also rename it to **get_contract_storage_data** as now it also serves the counter value as well as the recent sender's address:
 ```
-(int, slice) get_the_latest_sender() method_id {
+(int, slice) get_contract_storage_data() method_id {
   slice ds = get_data().begin_parse();
   return (
     ds~load_uint(32), ;; counter_value
@@ -142,7 +142,7 @@ Let's see how our final code looks like:
   return ();
 }
 
-(int, slice) get_the_latest_sender() method_id {
+(int, slice) get_contract_storage_data() method_id {
   slice ds = get_data().begin_parse();
   return (
     ds~load_uint(32), ;; counter_value
