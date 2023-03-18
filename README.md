@@ -78,7 +78,7 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 |                             4. Setting up testing workflow and writing tests                              | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%203/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                        5. Deploying smart contract                                        | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%203/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
-### 4. Mastering FunC contracts coding
+### 4. Mastering FunC contracts coding [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%204)
 
 :bust_in_silhouette: Assignee: [Mark Okhman](https://t.me/markokhman)
 
