@@ -677,6 +677,8 @@ We had to similarly change three things in our **onchaintest.ts** script:
 
 Now we can deploy and run onchain test on both - testnet and mainnet!
 
+> **Keep in mind that for mainnet you need to use TonHub wallet (mainnet version of Sandbox). It is also available for [iOS](https://apps.apple.com/tt/app/tonhub-ton-wallet/id1607656232) and [Android](https://play.google.com/store/apps/details?id=com.tonhub.wallet&hl=en&gl=US).**
+
 You've made it! Seriously, I'm proud of you! We've done a solid amount of work, but the good thing is that now you understand the whole process of how contracts get developed and deployed.
 
 In our next chapter we are going to dig into more complex FunC logic and writing local tests for it.
