@@ -57,7 +57,10 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 |                                             3. Understanding transaction cost                                            | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                           4. Authorization of messages in contracts                                           | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                  5. Scalable contracts                                   | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                  6. Review of classic business problems                                   | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                  6. Review of classic business problems                                   | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%202/Lesson%206.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+
+
+
 
 
 
