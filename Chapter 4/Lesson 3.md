@@ -6,7 +6,7 @@ In this lesson we are going to practice implementing more different commands, cr
 What's our plan? Let's break it down:
 - our contract will become more strict on commands, we are going to introduce a new op code meant for logic of depositing funds to the contract
 - another op code we are going to introduce is withdrawal of funds. During the withdrawal process, the funds are actually sent to the address as a message, so we will learn how to send messages from within the contract
-- any funds that will arrive with unkonwn operation codes will be returned to the sender
+- any funds that will arrive with unknown operation codes will be returned to the sender
 - we will introduce a new value in our storage - owner of the contract. Only owner of the contract is able to withdraw funds. We will also separate the storage load and write logic into functions, to keep our main code clean
 
 
@@ -125,7 +125,7 @@ if (op == 2) {
 ```
 
 However, it's getting a bit more complicated with the withdrawal. We have to compare the sender address to the owner address of smartcontract. Let's see what are some things that we need to know in order to implement this logc: 
-- to compare the owner's and the sender's addresses we use FunC standar function **equal_slice_bits()**
+- to compare the owner's and the sender's addresses we use FunC standard function **equal_slice_bits()**
 - we are using **throw_unless()** function to throw an error if the result of comparison was **false**. There is also another way to through an error - **throw_if()**, this one is throwing error if the condition passed into this function is returning true.
 - the message body with this op would require to also have an integer stating the amount, requested to withdraw. We compare this amount to the actual balance of contract (standard FunC function **get_balance()**) 
 - we want our contract to always have some funds, to be able to pay for rent and necessary fess (learn more about fees in Chapter 1), so we would need to set some minimum that would have to stay on the contract and throw an error, if the requested amount doesn't allow that.
@@ -156,7 +156,7 @@ if (op == 3) {
 }
 ```
 
-As you can see we are reading the amount of coins that are requested or withdrawal (it will be stored in our `in_msg_body` right after the op code, we will do this in next lesson) checking the balance is bigger or equal then the requested withdrawal amount.
+As you can see we are reading the amount of coins that are requested or withdrawn (it will be stored in our `in_msg_body` right after the op code, we will do this in next lesson) checking the balance is bigger or equal then the requested withdrawal amount.
 
 We also use a good technique of making sure that the minimum amount for storage is kept on the contract.
 
@@ -239,7 +239,7 @@ Let's have a closer look on what is going on here.
 
 4. `.store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1)` - this one is interesting. Technically we just write big a mount of zeros into the cell (namely the amount of zeros equals to 1 + 4 + 4 + 64 + 32 + 1 + 1). Why so? We know that there is a clear structure of how those values are consumed and that means every 0 we put there is for some reason.
 
-    Interesting is the part that those zeros are working in two ways - some of them are put as 0 because the validator will revrite the value anyways, some of them are put as 0 because this feature is not supported yet (ex. extra currencies).
+    Interesting is the part that those zeros are working in two ways - some of them are put as 0 because the validator will rewrite the value anyway, some of them are put as 0 because this feature is not supported yet (ex. extra currencies).
     
     Just to be sure we understand why there is so many zeros, let's break down it's intended structure:
     - First bit stands for empty extra-currencies dictionary.
@@ -341,8 +341,8 @@ const const::min_tons_for_storage = 10000000; ;; 0.01 TON
 
         var msg = begin_cell()
             .store_uint(0x18, 6)
-            .store_slice(addr)
-            .store_coins(grams)
+            .store_slice(sender_address)
+            .store_coins(return_value)
             .store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1);
 
         send_raw_message(msg.end_cell(), msg_mode);
