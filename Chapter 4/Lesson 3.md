@@ -141,7 +141,7 @@ const const::min_tons_for_storage = 10000000; ;; 0.01 TON
 Then, we implement the logic of a withdrawal. It will look like this:
 ```
 if (op == 3) {
-    throw_unless(103, equal_slices(sender_address, owner_address));
+    throw_unless(103, equal_slice_bits(sender_address, owner_address));
 
     int withdraw_amount = in_msg_body~load_coins();
     var [balance, _] = get_balance();
@@ -254,7 +254,7 @@ Let's have a closer look on what is going on here.
 Let's see how this applies to our funds withdrawal code:
 ```
 if (op == 3) {
-    throw_unless(103, equal_slices(sender_address, owner_address));
+    throw_unless(103, equal_slice_bits(sender_address, owner_address));
 
     int withdraw_amount = in_msg_body~load_coins();
     var [balance, _] = get_balance();
@@ -329,7 +329,7 @@ const const::min_tons_for_storage = 10000000; ;; 0.01 TON
   }
 
   if (op == 3) {
-        throw_unless(103, equal_slices(sender_address, owner_address));
+        throw_unless(103, equal_slice_bits(sender_address, owner_address));
 
         int withdraw_amount = in_msg_body~load_coins();
         var [balance, _] = get_balance();
