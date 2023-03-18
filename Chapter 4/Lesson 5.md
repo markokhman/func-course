@@ -1,4 +1,4 @@
-## Chapter 4. Lesson 5. Using Bluepring deploy scripts
+## Chapter 4. Lesson 5. Using Blueprint deploy contracts
 ###### tags: `Chapter 4`
 \
 As you remember, in the very begining of our FunC programming journey, we've quickly noted that there is a great library/tool called [Blueprint](https://github.com/ton-community/blueprint).
