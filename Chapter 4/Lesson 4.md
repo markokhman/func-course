@@ -64,7 +64,18 @@ describe("main.fc contract tests", () => {
 
     const initAddress = await blockchain.treasury("initAddress");
     const ownerAddress = await blockchain.treasury("ownerAddress");
- 
+    
+    const myContract = blockchain.openContract(
+      await MainContract.createFromConfig(
+        {
+          number: 0,
+          address: initAddress.address,
+          owner_address: ownerAddress.address, // now we create myContract from 3 parameters
+        },
+        codeCell
+      )
+    );
+
  // ...rest of testing code
  
 ```
@@ -79,7 +90,9 @@ Since we have to re-initiate a contract before each new test, we will also bring
 
 
 ```
-// ... library imports
+// We need to additionally import SandboxContract and TreasuryContract
+import { Blockchain, SandboxContract, TreasuryContract } from "@ton-community/sandbox";
+// ... other library imports
 describe("main.fc contract tests", () => {
   let blockchain: Blockchain;
   let myContract: SandboxContract<MainContract>;
