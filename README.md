@@ -33,7 +33,7 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 
 ## :pencil:Chapters breakdown and progress status
 
-### 1. Introduction to TON
+### 1. Introduction to TON. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%201)
 
 :bust_in_silhouette: Assignee: [Oleg Andreev](https://t.me/oleganza)
 
@@ -46,7 +46,7 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 |                                     5. Tokens: unique / fungible, currencies, DNS items etc.                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 
-### 2. TVM, transactions, scalability and business cases
+### 2. TVM, transactions, scalability and business cases. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%202)
 
 :bust_in_silhouette: Assignee: [Oleg Andreev](https://t.me/oleganza)
 
@@ -66,7 +66,7 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 
 
 
-### 3. Smart contract development lifecycle
+### 3. Smart contract development lifecycle. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%203)
 
 :bust_in_silhouette: Assignee: [Mark Okhman](https://t.me/markokhman)
 
@@ -78,7 +78,7 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 |                             4. Setting up testing workflow and writing tests                              | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%203/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                        5. Deploying smart contract                                        | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%203/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
-### 4. Mastering FunC contracts coding [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%204)
+### 4. Mastering FunC contracts coding. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%204)
 
 :bust_in_silhouette: Assignee: [Mark Okhman](https://t.me/markokhman)
 
@@ -93,7 +93,7 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 
 > TODO: Idea - add a lesson that would cover op codes aliasing, TL-B file composing, explain bouncing and how to work with it, how to debug
 
-### 5. NFT & Jettons
+### 5. NFT & Jettons. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%205)
 
 :bust_in_silhouette: Assignee: [Nikita Misharin](@thesmartnik)
 
@@ -106,7 +106,7 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 |                                           5. Jetton Wallet contract                                           | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                           6. Jettons and NFT contracts deployment                                            | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
-### 6. Smartcontract security
+### 6. Smartcontract security. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%206)
 
 :bust_in_silhouette: Assignee: CertiK
 
@@ -118,7 +118,7 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 |                        4. Storage Management                         | [Link](Chapter%206/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 
-### 7. Frontend interaction with TON blockhain
+### 7. Frontend interaction with TON blockhain. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%207)
 
 :bust_in_silhouette: Assignee: [Mark Okhman](https://t.me/markokhman)
 
@@ -132,6 +132,6 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 |                               6. Telegram Web App structure and programming                               | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                 7. Telegram bot structure and programming                                 | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
-### 8. Ecosystem products, future plans and vision
+### 8. Ecosystem products, future plans and vision.
 
 :bust_in_silhouette: Assignee: [Kirill Malev](https://t.me/malev)
