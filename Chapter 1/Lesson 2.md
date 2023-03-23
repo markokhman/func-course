@@ -5,26 +5,24 @@
 
 ## Blockchain accounts and transactions
 
-In the previous lesson, we did an overview of the entire ecosystem. Now we're going to dive specifically into the architecture of the blockchain itself, to give an overview of a blockchain itself. 
+In the previous lesson, we did an overview of the entire TON ecosystem. Now we're going to dive specifically into the architecture of the blockchain itself.
 
 ### How blockchains work
 
 So what is the block and what is the chain in the context of blockchain? TON blockchain is a ledger of state transitions.
 It's kind of a more general idea than just a ledger of transfers. It's a ledger of changes in the state of arbitrary accounts. Every **smart contract** is also called an **account**. 
 
-An account has its own place, it has its **own storage** and it has its own **unique identification address**, so we call it an address or a contract ID.
-
-Another way to describe a contract is an **account** that holds **arbitrary data**, **TON coins** and the **program code**. 
+An account has its **own storage** and it has its own **unique address**. **Accounts** also stores **TON coins** balance and the **program code**. 
 
 It's up to the developer to design the logic of the contract by using any code they want within the syntax supported by the virtual machine called TVM. 
 
-Developers are provided with pretty much unlimited flexibility through the lifetitem of a contract. They can change the data, they can even change the code of the contract in certain scenarious and of course - they can transfer the coins around. It's important to note that these contracts are self contained, they have no visibility into anything outside themselves. This is what ensures the infinite scalability of the TON blockchain as every contract is self-contained - it can only receive the incoming message from some other contracts or from the outside world. The contract will then process this message by program code and change it's own state according to the results of this incoming message processing.
+Developers are provided with pretty much unlimited flexibility through the lifetime of a contract. They can change the data, they can even change the code of the contract in certain scenarios and of course - they can transfer the coins around. It's important to note that these contracts are self-contained, they have no visibility into anything outside themselves. This is what ensures the infinite scalability of the TON blockchain as every contract is isolated from the others - it can only receive the incoming message from some other contracts or from the outside world. The contract will then process this message by program code and change it's own state according to the results of this incoming message.
 
-As TON blockchain is asynchronous, it cannot go and read the state of any other contract and immediately get the result. In order to use some other contract's state, the contract has to  send a message and maybe later, it will receive the desired reply and it's program code has to be ready to process this reply along with some other message from other contract. This concept makes those contracts look very similar to computers on the internet. So every computer is independent, they have their own state, their own programmed logic and they have no idea when and how their messages will be processed.
+As TON blockchain is asynchronous, it cannot go and read the state of any other contract and immediately get the result. In order to use some other contract's state, the contract has to  send a message and maybe later, it will receive the desired reply. This concept makes those contracts look very similar to computers on the internet. So every computer is independent, they have their own data, their own programmed logic and they have no idea when and how their messages will be processed by others.
 
 ### The Guarantees and Limitations of Blockchain Technology
 
-There are some guarantees that the blockchain provides you. You could verify the address of any incoming message and be sure that behind it was specific code that you might trust. Similarly, if you send a message to a specific address, you have a cryptographic assurance that there will be very specific code that you may want to trust. Other than that, the network doesn't really guarantee any certain delays for the reply, due to various reasons. It might be very well that the participants in the desired reply are scaled out to billions of computers. Messages that participate in forming the reply might be routing over multiple blocks and takes time for the final reply to be formed. It might be also a case that other contracts ran out of money or somethin unexpected can happen. So while developing your contract you need to only focus on your own contract's logic and state.
+There are some guarantees that the blockchain provides you as a developer. You could verify the address of any incoming message and be sure that behind this address there is specific code that you may trust. Similarly, if you send a message to a  address, you have a cryptographic assurance that there will be  specific code behind this address. The network guarantees that the message will be delivered but doesnt gauarantee how long this will take. It might be very well that the participants in the desired reply are scaled out to billions of computers. Messages that participate in forming the reply might be routing over multiple blocks and takes time for the final reply to be formed. It might be also a case that other contracts ran out of money or somethin unexpected can happen. So while developing your contract you need to only focus on your own contract's logic and state.
 
 ### Messages and Transactions
 
