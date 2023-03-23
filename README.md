@@ -93,20 +93,46 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 
 > TODO: Idea - add a lesson that would cover op codes aliasing, TL-B file composing, explain bouncing and how to work with it, how to debug
 
-### 5. NFT & Jettons. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%205)
+
+### 5. Frontend interaction with TON blockhain. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%205)
+
+:bust_in_silhouette: Assignee: [Mark Okhman](https://t.me/markokhman)
+
+| &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
+| :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
+|                                      1. Dapp structure and basic project setup                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%205/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                    2. Setting up TON Connect                                     | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%205/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                       3.  Reading and presenting data from our contract                       | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%205/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                        4. Making increment, deposit and withdrawal transactions                         | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%205/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                        5. Deploying Dapp to Github                        | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+
+
+### 6. Building Telegram-compatible interfaces for TON blockchain. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%206)
+
+:bust_in_silhouette: Assignee: [Mark Okhman](https://t.me/markokhman)
+
+| &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
+| :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
+|                                      1. Telegram chatbot credentials                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                    2. Pack dapp as a TWA in telegram chatbot                                     | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                       3. Setting up a backend project for chatbot                       | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                        4. Programming command-driven chatbot interface                         | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                        5. Deploy chatbot to cloud                        | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+
+### 7. NFT & Jettons. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%207)
 
 :bust_in_silhouette: Assignee: [Nikita Misharin](@thesmartnik)
 
 | &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
 | :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|                                    1. Jettons and NFTs architecture                                    | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                    1. Introduction to tokens, chapter overview                                    | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                      2. NFT Collection Smart contract                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                     3. NFT Item / SBT Item smart contract                                     | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                     4. Jetton Master contract                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                           5. Jetton Wallet contract                                           | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                           6. Jettons and NFT contracts deployment                                            | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
-### 6. Smartcontract security. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%206)
+
+### 8. Smartcontract security. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%208)
 
 :bust_in_silhouette: Assignee: CertiK
 
@@ -117,21 +143,6 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 |                       3. Gas Management                       | [Link](Chapter%206/Lesson%203.md)  | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                        4. Storage Management                         | [Link](Chapter%206/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
-
-### 7. Frontend interaction with TON blockhain. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%207)
-
-:bust_in_silhouette: Assignee: [Mark Okhman](https://t.me/markokhman)
-
-| &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
-| :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|                                      1. Authentification with Tonhub                                      | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                    2. Authentification with Tonkeeper                                     | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                       3. Simple logic of showing wallet data after authentification                       | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                        4. Initiating/requesting transactions (tonhub & tonkeeper)                         | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                        5. Using TON API to read and represent data from blockchain                        | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                               6. Telegram Web App structure and programming                               | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                 7. Telegram bot structure and programming                                 | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-
-### 8. Ecosystem products, future plans and vision.
+### 9. Ecosystem products, future plans and vision.
 
 :bust_in_silhouette: Assignee: [Kirill Malev](https://t.me/malev)
