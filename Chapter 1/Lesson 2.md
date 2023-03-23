@@ -28,8 +28,10 @@ It may also be a case that some intermediate contracts run out of money and fail
 
 ### Messages and Transactions
 
-So what are messages and what are transactions. The thing that happens between the contracts is called a message, it carries a little bit of coins and arbitrary data to a specific destination, the contract ID or address.
-When the message arrives to the contract it's processed, the contract updated state, and emits new messages, this whole bunch of activity on a contract is recorded as a transaction. Think of this, if you have a chain of messages from contract A to contract B to contract C, then you have a message in between A and B. But you have transactions on A and transaction on B. And then if you have another message from B to C, that's the second message and the third transaction that is recorded on contract C. So if you have this chain with two messages, then you have three transactions and two messages. You also have a third message that is an external message that activates this chain.
+So what are messages and what are transactions. The thing that happens between the contracts is called a message, it carries a little bit of coins and arbitrary data to a contract address.
+When the message arrives to the contract it's processed, the contract updated state, and emits new messages. All this activitity on a contract is recorded as a transaction. Think of this, if you have a chain of messages from contract A to contract B to contract C, then you have a message in between A and B. But you have transactions on A and transaction on B. And then if you have another message from B to C, that's the second message and the third transaction that is recorded on contract C. So if you have this chain with two messages, then you have three transactions and two messages. 
+
+To initiate this chain of messages we need to add an external message that arrives to contract A. It is called an external message.
 
 ### The Process of Sending and Recording Transactions on the Blockchain
 
