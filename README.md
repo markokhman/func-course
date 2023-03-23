@@ -17,19 +17,21 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 
 ### 1. Introduction to TON
 
-### 2. The essense of Smart contracts
+### 2. TVM, transactions, scalability and business cases
 
 ### 3. Smart contract development lifecycle
 
 ### 4. Mastering FunC contracts coding
 
-### 5. NFT & Jettons
+### 5. Frontend interaction with TON blockhain
 
-### 6. Smartcontract Security
+### 6. Building Telegram-compatible interfaces for TON blockchain
 
-### 7. Frontend interaction with TON blockhain
+### 7. NFT & Jettons
 
-### 8. Ecosystem products, future plans and vision
+### 8. Smartcontract Security
+
+### 9. Ecosystem products, future plans and vision
 
 ## :pencil:Chapters breakdown and progress status
 
