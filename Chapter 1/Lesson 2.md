@@ -22,7 +22,9 @@ As TON blockchain is asynchronous, it cannot go and read the state of any other 
 
 ### The Guarantees and Limitations of Blockchain Technology
 
-There are some guarantees that the blockchain provides you as a developer. You could verify the address of any incoming message and be sure that behind this address there is specific code that you may trust. Similarly, if you send a message to a  address, you have a cryptographic assurance that there will be  specific code behind this address. The network guarantees that the message will be delivered but doesnt gauarantee how long this will take. It might be very well that the participants in the desired reply are scaled out to billions of computers. Messages that participate in forming the reply might be routing over multiple blocks and takes time for the final reply to be formed. It might be also a case that other contracts ran out of money or somethin unexpected can happen. So while developing your contract you need to only focus on your own contract's logic and state.
+There are some guarantees that the blockchain provides you as a developer. You could verify the address of any incoming message and be sure that behind this address there is specific code that you may trust. Similarly, if you send a message to a  address, you have a cryptographic assurance that there will be  specific code behind this address. The network guarantees that the message will be delivered but doesnt gauarantee how long this will take. The chain of messages could spend thousands of shards and take multiple blocks to finalize the transaction.
+
+It may also be a case that some intermediate contracts run out of money and fail processing their messages, so when you develop the contract you need to focus on your own contract's consistency and the way it interacts with other contracts.
 
 ### Messages and Transactions
 
