@@ -43,9 +43,9 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 | :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
 |                                 1. TON Ecosystem overview                                 | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                  2. Blockchains, accounts, transactions in TON                                  | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                               3. Blockchain design principle: three generations of blockchains                               | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                               3. Blockchain design principle                           | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                            4. Concept of account/contract                             | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                                     5. Tokens: unique / fungible, currencies, DNS items etc.                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                     5. Tokens, currencies, DNS items etc.                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%201/Lesson%205.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 
 ### 2. TVM, transactions, scalability and business cases. [Chapter overview](https://github.com/markokhman/func-course/tree/main/Chapter%202)
