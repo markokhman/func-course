@@ -102,10 +102,10 @@ For any questions or inquiries, please contact [Liza](https://t.me/Vetach) or [M
 
 | &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; **Lesson** &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |          **Text script**          |         **Presentation**          |             **Video**             |
 | :-------------------------------------------------------------------------------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|                                      1. Dapp structure and basic project setup                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%205/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                                      1. Dapp structure and project setup                                      | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%205/Lesson%201.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                                    2. Setting up TON Connect                                     | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%205/Lesson%202.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                       3.  Reading and presenting data from our contract                       | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%205/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
-|                        4. Making increment, deposit and withdrawal transactions                         | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%205/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                       3.  Reading data from our contract                       | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%205/Lesson%203.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
+|                        4. Initiating transactions from dApp                       | [Link](https://github.com/markokhman/func-course/blob/main/Chapter%205/Lesson%204.md) | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 |                        5. Deploying Dapp to Github                        | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> | <input type="checkbox" disabled/> |
 
 
