@@ -1,34 +1,74 @@
-# Chapter 1, lesson 4
-## Concept of Contracts and Accounts
 
-So, very quickly, what you call an account is really a smart contract on TON and it's a pretty low level thing. It is used to implement not just literally accounts where people hold their funds, it is used to implement various entities as well. So the thing that you're holding, like a token, is also a smart contract. And it's also an account in some sense. So just to bear in mind that this is a very low level thing. We shall talk about what high level things could be built with contracts in the further lessons.
+# Concept of Contracts and Accounts
+
+###### tags: `Chapter 1`
+
+*Let's do a deep dive into accounts and contracts.*
+
+## Contracts
+
+> ##### In the previous lesson, we learned the following things about contracts:
+> - *Account and contract at the low level in TON are interchangeable terms.*
+> - *Contract is the data, code, and Toncoin balance.*
+> - *Contracts receive incoming messages, process them and emit outgoing messages and also change their own internal state.*
+
+But let's dive a little bit deeper. :whale:
+
+> :mailbox_with_mail: **Contract also has the identifier or address.** 
+> *This address is a cryptographic hash of the contract's initial data and initial code.*
+> :question: Why is that? 
+> :ballot_box_with_check: You don't want to change the address whenever the state of the contract changes, and that's why the address is uniquely identifying the very initial state with which the contract was created. 
+
+> :tent: **The second important aspect of the contracts is their locality.**
+
+All of this data is <u>fully encapsulated and from the perspective of the program code</u>, it only sees the storage of the contract itself and its balance. It cannot see the state of all the other contracts. This means that whatever changes are happening to a contract in one transaction are completely independent from changes to another contract in another transaction somewhere else on the blockchain.
+ ***This is the key to infinite scalability of TON blockchain.***
+
+## What can be done with contracts?
+:question: What can you build with contracts? 
+
+1. First of all, the <u>contracts allow you to build the user accounts</u>. 
+*In TON, every user's account is actually a custom wallet contract.*
+
+2. Secondly, multi-signature contract that operated by multiple user wallets.
+
+3. Third, the contracts are used to build some things that you don't typically think of as a contract. 
+*For instance, tokens*.
+
+## Tokens in TON
+
+*In TON, the token that you can transfer is really a separate contract that has its own state that specifies some attributes of this token.*
+
+> :moneybag: One of these attributes is the owner.
+
+*Whenever you want to change the ownership of a token, you have to send the message to this token that specifies the new owner. Then the token will check that the message is sent by the appropriate owner, change its owner to a new one, and be done with it.*
 
 
-### Contracts
+## Protecting TON
 
-So, what is the contract? We'll use just the term contract from this point on. The contract is an entity on the blockchain that has its own little state that consists of its code, its data, and the number of TON coins on its balance. TON coins are attracted natively and all the other assets on TON are synthetically created using other contracts and can operate on top of this model. The contract also has the identity, it has the secure cryptographic identifier, that’s called address: it's a hash of the initial code and initial data. So when you design your contract, you kind of define it with some initial state, like its addresses are defined by its initial state and its code. And then from this point on, either of those could be mutated, but the address doesn't change. Also, like we discussed in the previous chapter, the contracts have very local visibility: they just see these three things for themselves and what they do is the following: they receive the incoming message, just one at a time, one per transaction, then they emit any number of outgoing messages and can also transform their state. So that's what contracts do. This is just a building block for various things.
+*To protect the network against denial-of-service attacks, all the contracts need to pay for their operation.*
 
-### What can be done with Contracts
+This payment (it is also called fees) consists of many, many parameters that cover the rent, the execution costs, the message routing, and some other things. 
+*Let's dive in the most important ones.* :whale:
 
-And what are the things you can do with contracts? First of all, it's the wallet account. So every user has a wallet application, and they hold their TON coins and any other assets using a wallet contract. So it's a contract that effectively says: “I want to receive a message with a valid signature, check the signature, unpack the inside message that was transferred to me and forward to the rest of the contracts in the network”. If you want to send money to someone, you have the instructions like “send 10 coins to this address, pack it up in a message with a signature, send this into your wallet contract that checks it, unwraps it and transfer it as an internal message to the next contract, which might be also wallet contract”. Now, contracts also could implement things like tokens. A token is another contract that has properties like owner, ownership, or a quantity. And when you want to transfer the token, you have to send a message to it saying: "Could you please transfer a portion of you or to switch your owner", and this is the logic that within the token, implements this operation.
+> :exclamation: Every time you execute the code on the contract, you invoke ***gas costs*** – every instruction in the virtual machine, the TVM, has a designated cost in the abstract units called ***gas***.
+> :gem: At the network level, there is a parameter that is called ***gas price*** that specifies how many Tonсoins you have to pay for each instruction.
+> :hourglass_flowing_sand: *The longer your program runs, the more gas costs it will incur, and this cost is deducted from the contract's balance.*
+> :x: *Whenever the balance runs down to zero, the execution aborts, and the transaction fails.*
+> :heavy_dollar_sign: Gas cost makes sure that you cannot impose unbounded execution costs on the whole network without paying for it.
 
-### Understanding the TON Blockchain's Token Balances
-
-So the TON blockchain doesn't have a notion of your balances of tokens on your Peoples accounts (??). It just sees those contracts that send messages among themselves. And then we, people, put the meaning into some of those contracts and say, these are tokens that you know, switch the owner, and they are valuable, because, like I have it and you don't. 
-
-### Payment for execution of contract code
-
-And finally, a few words on the cost of this execution. So the contract has to pay for its existence and its operation. And this payment consists of roughly three categories of things. The first is a gas payment for execution of its code. So every time you run an operation in the code of the contract, it slowly eats from your balance. And the more expensive operations take more. When it hits the limit and runs out of money on its balance, the operation fails. And it's still recorded as a transaction, except the state of the contract is not changed, meaning the code and data are left unchanged. All the outgoing messages are also left unchanged unless they were explicitly committed. The money is charged from the balance and spent as transaction fees. So if you're a developer, you need to really pay attention to how expensive your operations are and whether you have enough balance to finish all your operations because you have this, sort of, ticking bomb and you can run out of money, or you can expose yourself to denial of service attacks when someone may craft some evil message that will force your contract to deplete its balance. So we also have to take care of this risk. 
-
-### Rent Payment for Contract Storage
-
-Then there is also rent. So while the contract is idle, it's just sitting there on a blockchain. It has some data in its storage and one contract may have a little bit of data and another one may have a lot of data, all of them have to pay a certain fee per byte per second. And this fee is virtually charged every second, but in fact, it's charged when incoming transactions happen. So every contract kind of knows when the last transaction was once they know the current transaction. They know the interval and when the second transaction arrives, they charge for this entire amount, so for instance, if your wallet contract was not used for a month, then your first transaction that you do will see a noticeably higher fee on a blockchain which may be surprising. This is because the blockchain charged you for all this time that your little piece of code and data were sitting on all the nodes. And then if you immediately do another transfer, then the second window will be much shorter. So there will be much less rent to pay. And this fee will be much smaller on the next transaction. This is also a source of pitfalls, because if you have a utility contract, say token, then it must exist, it must hold its state, and it must have a little bit of money on it to pay for its rent. And it's the job of either application developer or the wallet developer to make sure that those tokens are kept alive by having enough money while they're used. So if you have some kind of like limited lifetime tokens that need to exist for one day, you can put a little bit of money, just for one or two days, and then just not think about it, because at some point this money will be all eaten by the rent.
-
-### Token Strength and Scalability in TON
-
-As the token will be frozen and eventually deleted, you don't have to worry about it. But if it's a kind of long term token, like a stable coin, this is something that you want to recharge and refill with a little bit of coins to make it live for another year. This is a source of another kind of conceptual difficulty in TON. However the strength is very important because it also assures you scalability and protection against denial of service when every cost has to be explicitly paid. 
+**But there is another important cost that is called rent!**
+> :exclamation: TON makes sure that for every bit of data, and for every second of the life of the contract, there is a designated payment called **rent** that is deducted from the contract balance.
 
 
-### Conclusion
+## Considerations when designing smart contracts.
 
-To conclude, there are some fixed fees or some kind of variable fees. The more data you inflict on the network to be routed to transport around them, the more fees you pay. And these are just fees per byte of the message that you're sending. So that's the overview of the anatomy of the accounts and contracts, how they are used and what are the key elements to them.
+There are *two most important considerations when designing smart contracts*:
+1. *Gas costs* of the execution. 
+2. *Rent* that the contract has to bear over its lifetime.
+
+## Frozen contracts.
+
+> If the contract runs out of funds and because of the rent, then it may become ***frozen*** :cold_sweat:.
+
+This means that the network will offload all of its data and replace it with a cryptographic hash of its latest state. In this case data is not lost, but the network optimizes the storage :cd: and offloads expensive data out of the storage of the validators. When the user of this contract comes along and wants to reinstate :crystal_ball: the contract to unfreeze it, they have to provide their own snapshot of the data that matches this hash.
