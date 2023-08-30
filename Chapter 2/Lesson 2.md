@@ -1,21 +1,84 @@
-# **Chapter 2, lesson 2**
-### Message types and computation phases
+# Messages types and computation phases
 
-In the previous lesson, we talked about overall setup for the TVM contract execution, about the memory storage, and however TVM is instantiated for the contract. And in this chapter, we'll walk through the lifecycle of transaction. So where does it start? how the game is instantiated? And what are the results of the like message processing. 
+###### tags: `Chapter 2`
 
-### Internal and external message
-Now, in the beginning, there is a message that comes into contracts. And there are two kinds of messages that are quite distinct. One is internal message, and the other one is external message. So we'll talk about the fine differences between them in the next chapter when we'll be talking about authorization. But for this lesson, what's important to know is that the external messages are simply a strings of bytes, they're coming from outside from nowhere from the perspective of the blockchain. This is for the messages that are initiated by the user or like the user's wallet. And these typically have a cryptographic signature that authorizes this data, but may not have. And from the point of view of the blockchain, this is external data that comes in the internal messages are those that are issued in between the contracts. So, you can imagine that the very first message always has to be external, barring some, you know, exotic cases, but like, normally, for the most transactions, there is external messaging ready by the user, that gets to the first contract on its way and then that contract inbox its code processes, the message changes with some state and then issues one or more or maybe non outgoing messages and those will be the internal messages. And the interesting thing about Ton architecture is that all these internal messages are automatically authenticated by the message sender. So, anytime the internal message comes in the tongue blockchain architecture guarantees to a contract that the address of the sender from whom the message was received is correct invalid. And this is very important feature that is used for all sorts of cool multi contract applications.
-### What is a transaction?
-So, back to the contracts the contract receives the message internal external, then it does some computation and then produces some new state for itself or outgoing messages. So let's look deeper and what does this mean? So, the process like this whole process is called a transaction. So when we record the results on the blockchain, this is what is called transaction and effectively binds the incoming message outgoing messages and update to the state of the contract. So transaction goes through multiple phases. 
-### Storage phase
-So the phase one is called a storage phase. This is when the network checks how much rent for the bytes stored by the contract occurred since the last transaction. So let's say you have a contract that stores 100 bytes, and the price of each bite per second is like one nano coin. And then if the contract existed for 1000 seconds with these countries by since the previous transactions entered the storage phase, you would have subtracted 100,000 nano coins from the balance of of the contracts. So this is the very first phase when we'd like to touch the contract nothing is computed yet. We want to take take the storage fees from the contract. And if there is enough funds on the balance of the contract, then we just move along and if there is not not enough money, then the contract is transition to the frozen state. The system offloads like really replaces the state of the contract with it's a cash of a snapshot and kind of keeps this for a limited amount of time. It's typically like around a half a year. This means that the network does not really forget the state of the contract, but it fully removes all the all the incurring costs associated with storing this contract, and the transaction doesn't proceed because we don't have the code anymore. And then it's the job of the owner of the contract to kind of like for reinstance, shade and freeze this contract with the with its up to date state, matching this cash, and font, this contract with wood coins, right, so it can continue operating. And if after half a year, no one bothered to reinstantiate this contract, then it could be completely wiped out of the blockchain, which effectively means that under that contract address its status reset to the initial one. So if you have some kind of token that you own, and the amount of money that was stored on it for like paying its rent, dropped to zero, then after some time, this token is fully reset, and you effectively lose the ocean on ownership of this token. So the first page phases, the storage phase, when we take off their storage fees.
-### Credit phase
-The second phase is pretty simple. It's called credit phase when all the incoming coins that are coming with internal messages. And this is also another difference between internal and external messages is that external messages, simply byte strings, they cannot hold the value. But internal messages from contract to contract, they also may usually do have a some coins attached to them. So they are subtracted from the one contract and you know, transiting to another contract. And so this second phase, all these coins, just credited to the balance of the contract.
-### Computation phase
-Now, the third phase is where the most interesting things happening, it's the computation phase. This is when the TVM is instantiated, with the all the context and the code of the contract and its storage, and where your program is being executed. And while this program is executing, all the side effects that it wants to produce, like changing the state of a contract or issuing messages, they're all recorded as so called actions. So TVM, as a result of the execution of TVM, you have a list of actions. There are just a list of objects that record what the contract is supposed to do in the system. And those actions are processed in the next phase.
-### Action phase
-So if the execution of TVM’s completed successfully, then we come to the fourth phase called action phase, where we take the list of actions and go through them one by one. And one of these actions is the new contract storage. So you may have an action that says, Okay, I want to update the state of your contract to a new one. So we're going to replace its cell with a new cell. And other actions are outgoing messages. So if the contract created three outgoing messages, there will be three action items on that list. And then the blockchain would take care of routing those messages to other like shards and other contracts to get them delivered.
-### Bounce phase
-And finally, the fifth phase is called bounce phase. So if you have incoming message with a flag set, I'm bounced double, it means that all like all the incoming funds minus the fees can be bounced back, automatically in case there's any failure in the contract. So this is like a safety measure that allows you to recover the money that you sent into the contract in case there is you know, any failure and some contracts may be designed to kind of failsafe this way, where, for instance, if you're trying to buy something that is no longer for sale, then you're transferred money would be bounced back automatically, to to the recipient, and the designer of this contract doesn't have to, you know, design this like message like this bouncing message manually, this is all done by the system. The only the only trick is that if you send a bit like the message should it should be clearly marked as valuable. And if it's not, then all the funds will be just you know, placed idle on the recipient contract. This kind of brings us to the minor important details that users wallets are also contracts and they're usually not instantiated. They don't have the code. And so if you want to fund this user wallet you want to set bouncing ball flag to false meaning that you want to send the money in and you know that there is no code to process the message, you just want the money to stay there. And this is, this is like default behavior for the wallet. So if you want to find the wallet, you want to bounce the bill false. In most other cases, if you operate with you know, some interesting smart contracts that do some, some interesting applications, then you want to set the bouncing ball to true, just to make sure you get the money back in case of any sort of failure.
-### Addition to the Computation phase
-One more thing that I should have added to the to the completing phase is that this is where TVM track keeps track of the gas payments, and we'll talk about them in the next lessons. Every operation TVM also costs some money and more expensive operations cost more than the less expensive ones. And now this is where TVM kinda keeps track of, you know, how many coins are were spent so far by the execution. And in case you run out of coins on the balance and TVM exits sooner with a failure status. And this is another like important component of this transaction costs that we'll be talking about in separate lesson, like the gas keys, every every operation has a gas cost, and there is gas price in the configuration of the network. So every unit of gas costs some number of coins, if you run out of coins, or you fail the transaction execution. Also, as a developer, you have to control where he to commit the state. So you may you know, design the system that you're allowed to run out of gas, a limit that you could set manually, it could be lower than the balance. And actually, all of this we'll be talking about in the separate lesson. But if we're our you know, kind of lifecycle story, what's important is that in the first phase, we take, take off the balance, the storage costs, and then during the third computation phase, were taking off money for the computation costs. And in the action phase, also some actions cost some money. There is like fixed fees for like routing messages and for recording new storage. So those are also separate fees that will be paid and this is why an extra phase also transaction may fail.
+*Let's dive into how message is processed and what really is a transaction.*
+
+> :love_letter: In order for a contract to change its state, it must receive a message. It's called an ***incoming message***.
+
+> ##### There are two types of <u>incoming messages</u>:
+> :white_circle: - *External messages.*
+> :large_blue_circle: - *Internal messages.*
+
+## External messages.
+
+> ***External message*** - string of data that comes from nowhere from the perspective of a blockchain.
+> - This data is not :id: authenticated by itself.
+> - It doesn't have any money attached to it in form of :gem: Toncoins.
+> - It can really contain anything that the author of a contract wants.
+
+> :exclamation: ***It's the job of a contract to make sense of this data and parse it right inside its code.***
+
+
+## Internal messages.
+
+> ***Internal messages*** - those that are sent by contracts to other contracts. :busts_in_silhouette:
+> ##### These messages have a little bit more rich structure:
+> - Internal messages can carry the balances. :money_with_wings:
+> - Those messages are securely authenticated by the address of a sending contract. :key:
+> ***The entire architecture of TON guarantees the contracts that this address of a sender is correct.***
+
+
+## Handling messages and opcodes.
+
+*Once the contract received the message, <u>it could have two separate handlers for internal and external ones.</u>* 
+Both kinds of messages will have the arbitrary :mount_fuji: payload data that is designed by the author of a contract. If the contract wants to process different kinds of messages, then it will use something that we call ***opcodes***.
+
+> <u>***Opcodes (operation codes)*** :1234: - prefix of four bytes in the custom data in the message to indicate the type of the operation that the contract should support. </u>
+
+## Transactions.
+
+> :question: What is a transaction?
+
+> <u> ***Transaction*** :money_with_wings: - complex of changes to the state of the contract. </u>
+> :exclamation: *Message is not a transaction, it's just an input to a transaction!*
+
+##### :question: <u> What does the transaction do? </u>
+
+> *1. :arrow_forward: It changes the state of the contract.
+> 2. :clipboard: It creates the list of outgoing actions.*
+
+## Transaction phases. 
+
+###### <u> There are five phases :five: that the transaction goes through: </u>
+
+
+> 1. **Storage Phase** :ledger: 
+*Deducts storage fees based on bytes stored by the contract since the last transaction. If there are insufficient funds, the contract transitions to a frozen state, preserving its state for a limited time.*
+
+
+> 2. **Credit Phase** :bank:
+*This is where the coins attached to incoming message get credited to the contract.*
+
+> 3. **Computation Phase** :computer:
+*This is where your program comes to life. The TVM executes the code and verifies each operation and also keeps track of gas usage.*
+
+> 4. **Action Phase** :running:
+*Most important action in this phase is the new state of a contract. Your contract may at the end of the execution or at any intermediate step create new state and new storage for itself and this will be recorded after successful execution of a contract. There are other actions in the list and those actions are outgoing messages.*
+
+> 5. **Bounce Phase** :8ball:
+*This happens if the contract failed and the incoming message had a flag saying I'm a bounceable message. It means that at this phase if there is any failure and there's any money left from the incoming message, then the contract would create the outgoing message back to the sender to bounce the money back. This is a safety feature that allows people to get the most of the funds back in case there is any error or any failure inside the contract.*
+
+## Conclusion.
+
+##### Let's make the summary:
+
+- The contract receives an incoming message that could be *internal or external*.
+- *Internal message*s can carry money and can be authenticated by the address of the sending contract, while *external messages* are not authenticated by themselves at all and it's the job of a contract to create the authentication. 
+
+> - The execution of transaction goes through five stages.  
+>    - Storage phase to charge the rent. 
+>    - Credit phase when the incoming coins get credited to the balance. 
+>    - Computation phase where your code gets executed.
+>    - Action phase when the storage is updated and outgoing messages are routed.
+>    - Bounce phase when the contract deals with the failures and sends back the coins to the sender.
